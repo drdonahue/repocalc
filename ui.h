@@ -7,6 +7,7 @@
 
 void nc_init (void);
 void nc_loop (void);
+void nc_draw_screen(void);
 void nc_exit (void);
 
 #endif
