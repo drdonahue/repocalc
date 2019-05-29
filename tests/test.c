@@ -97,7 +97,6 @@ END_TEST
 
 START_TEST (test_stack_at_oob)
 {
-    int i;
     double retval;
     stk_elem * stack = NULL;
     retval = stk_at(stack, 0);
@@ -105,6 +104,22 @@ START_TEST (test_stack_at_oob)
     push(&stack, 1);
     retval = stk_at(stack, 1);
     ck_assert_msg(retval != retval, "stk_at returned %g instead of NaN for an OOB index", retval);
+}
+END_TEST
+
+START_TEST (test_stack_roll)
+{
+    int i;
+    stk_elem * stack = NULL;
+    for(i = 0; i < 5; ++i)
+    {
+        push(&stack, i);
+    }
+    roll(&stack, 2);
+    ck_assert_msg(stk_at(stack, 0) == 2, "Roll failed, %g at 0 instead of 2.0", stk_at(stack,0));
+    ck_assert_msg(stk_at(stack, 1) == 4, "Roll failed, %g at 1 instead of 4.0", stk_at(stack,1));
+    ck_assert_msg(stk_at(stack, 2) == 3, "Roll failed, %g at 2 instead of 3.0", stk_at(stack,0));
+    
 }
 END_TEST
 
@@ -128,6 +143,7 @@ Suite * test_suite(void)
     tcase_add_test(tc_core, test_stack_at);
 
     tcase_add_test(tc_core, test_stack_at_oob);
+    tcase_add_test(tc_core, test_stack_roll);
 
     suite_add_tcase(s, tc_core);
     return s;

@@ -27,6 +27,32 @@ double pop (stk_elem ** top)
     return ret;
 }
 
+void roll (stk_elem **top, int pos)
+{
+    stk_elem * tmp,*cur = *top;
+    int i;
+
+    if (stk_size(*top) < pos + 1)
+        return;
+
+    /* stop 1 short, we need to modify the one before pos*/
+
+    for (i = 0; i < pos-1; ++i)
+        cur = cur->nxt;
+    
+    /* keep track of element at pos */
+    tmp = cur->nxt;
+
+    /* remove it from the stack */
+    cur->nxt = tmp->nxt; 
+    
+    /* put it on top of the stack */
+    tmp -> nxt = *top;
+
+    *top = tmp;
+
+}
+
 int stk_size (const stk_elem * top)
 {
     int count = 0;

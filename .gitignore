@@ -1,3 +1,4 @@
 *.o
 repocalc
 test
+config.h
