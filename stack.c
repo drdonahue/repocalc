@@ -27,4 +27,14 @@ double pop (stk_elem ** top)
     return ret;
 }
 
-
+int stk_size (stk_elem ** top)
+{
+    int count = 0;
+    stk_elem * tmp = *top;
+    while (tmp != NULL)
+    {
+        ++count;
+        tmp = tmp->nxt;
+    }
+    return count;
+}

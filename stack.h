@@ -12,5 +12,7 @@ struct stk_elem
 
 void push (stk_elem ** top, double val);
 double pop (stk_elem ** top);
+int stk_size(stk_elem ** top);
+
 
 #endif

@@ -40,6 +40,27 @@ START_TEST (test_stack_pop_empty_stack)
 }
 END_TEST
 
+START_TEST (test_stack_size)
+{
+    stk_elem * stack = NULL;
+    int retval;
+    int i;
+
+    for (i = 0; i < 10; ++i)
+    {  
+        retval = stk_size(&stack);
+        ck_assert_msg(retval == i, "stk_size returned %d for stack size %d!", retval, i);
+        push(&stack, i);
+    }
+
+    for (i = 0; i < 10; ++i)
+    {
+        pop(&stack);
+    }
+    
+}
+END_TEST
+
 Suite * test_suite(void)
 {
     Suite *s;
@@ -53,6 +74,8 @@ Suite * test_suite(void)
     tcase_add_test(tc_core, test_stack_push_pop_multi);
     
     tcase_add_test(tc_core, test_stack_pop_empty_stack);
+    
+    tcase_add_test(tc_core, test_stack_size);
 
     suite_add_tcase(s, tc_core);
     return s;
