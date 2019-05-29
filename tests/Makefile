@@ -8,10 +8,10 @@ OBJ = stack.o
 
 all: test
 
-OBJ : SOURCES
+$(OBJ) : $(SOURCES)
 	$(CC) $(CFLAGS) -c $<
 
-.c.o:
+$(TESTS) : $(TESTS:.o=.c)
 	$(CC) $(CFLAGS) -c $<
 
 test: $(TESTS) $(OBJ)
