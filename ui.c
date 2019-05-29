@@ -19,25 +19,50 @@ void nc_loop (void)
     {
         c = getch();
         exit = ( c == K_EXIT );
+        if (c == KEY_RESIZE)
+        {
+            nc_draw_screen();
+        }
     }
 }
 
 void nc_draw_screen (void)
 {
-    int h,w,y;
+    int h,w,i;
+    char * blankline;
 
     /* Get the screen dimensions from NC */
     getmaxyx(stdscr, h, w);
 
+    /* create a blank line for the last 3 lines of the screen */
+    blankline = (char *) malloc(sizeof(char) * w);
+
+    for (i = 0; i < w-1; ++i)
+    {
+        blankline[i] = ' ';
+    }
+    blankline[w-1] = '\n';
+
     /* Go to 0,0 on the screen */
     move(0,0);
-    
-    for (y = h-4; y >= 0; --y)
+   
+    /* Draw the stack lines */
+    for (i = h-4; i >= 0; --i)
     {
-        wprintw(stdscr, "%2d > \n", y);
+        wprintw(stdscr, "%2d > \n", i);
     }
-    move(h-1, 0);
+    for (i = 0; i < 3; ++i)
+    {
+        wprintw(stdscr, blankline);
+    }
+
+    /* Go to the bottom right */
+    move(h-1, w-1);
+
+    /* Display to the screen */
     wrefresh(stdscr);
+
+    free(blankline);
 
 }
 
