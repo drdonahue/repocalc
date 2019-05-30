@@ -16,4 +16,6 @@ void fn_mul (stk_elem ** stack, double input, unsigned int cursorpos);
 
 void fn_div (stk_elem ** stack, double input, unsigned int cursorpos);
 
+void fn_negate (stk_elem ** stack, double input, unsigned int cursorpos);
+
 #endif

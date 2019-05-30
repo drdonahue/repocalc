@@ -59,3 +59,15 @@ void fn_div (stk_elem ** stack, double input, unsigned int cursorpos)
     a = pop(stack);
     push(stack, a/b);
 }
+
+void fn_negate (stk_elem ** stack, double input, unsigned int cursorpos)
+{
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 1)
+        return;
+    push(stack,-pop(stack));
+}
+
+
