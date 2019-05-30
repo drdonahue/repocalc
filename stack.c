@@ -27,6 +27,7 @@ double pop (stk_elem ** top)
     return ret;
 }
 
+/* Move the element at pos to the top of the stack */
 void roll (stk_elem **top, int pos)
 {
     stk_elem * tmp,*cur = *top;
@@ -64,16 +65,20 @@ int stk_size (const stk_elem * top)
     }
     return count;
 }
+
+/* Return the value at a given index of the stack, with 0 being the top. NaN is retunred if the index is invalid */
 double stk_at(const stk_elem * top, unsigned int n)
 {
     int i;
-
+    
+    /* Check for empty stack */
     if (top == NULL)
         return NAN;
 
     const stk_elem *tmp = top;
     for (i = 0; i < n; ++i)
     {
+        /* Check each step before we move to it. */
         if (tmp->nxt == NULL)
         {
             return NAN;
@@ -83,6 +88,8 @@ double stk_at(const stk_elem * top, unsigned int n)
     }
     return tmp->val;
 }
+
+/* Delete the stack and free its memory */
 void stk_free(stk_elem ** top)
 {
     stk_elem *tmp;

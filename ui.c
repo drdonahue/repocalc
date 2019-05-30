@@ -6,6 +6,8 @@ void nc_init (void)
     initscr();
     cbreak();
     noecho();
+    savetty();
+    keypad(stdscr, TRUE);
     
     clear();
 }
@@ -14,8 +16,10 @@ void nc_loop (void)
 {
     int exit = 0;
     int c;
+    unsigned int cursor_pos;
     stk_elem * stack = NULL;
-
+    char iline[INPUT_BUFFER_SIZE] = "";
+    
     nc_draw_screen();
     while (!exit)
     {
@@ -27,8 +31,13 @@ void nc_loop (void)
             nc_draw_screen();
             nc_draw_stack(stack);
         }
+        
+        parse(&stack, c, &cursor_pos, iline); 
+        nc_draw_stack(stack);
+        nc_draw_input(iline);
     }
     stk_free(&stack);
+
 }
 
 void nc_draw_screen (void)
@@ -81,11 +90,10 @@ void nc_draw_stack (const stk_elem * stack)
     /* create a blank line for empty stack elements */
     blankline = (char *) malloc(sizeof(char) * w-5);
 
-    for (i = 0; i < w-7; ++i)
+    for (i = 0; i < w-6; ++i)
     {
         blankline[i] = ' ';
     }
-    blankline[w-7] = '\n';   
     blankline[w-6] = 0;
 
     stack_size = stk_size(stack);
@@ -93,15 +101,32 @@ void nc_draw_stack (const stk_elem * stack)
     for (i = 0; i < h-4; ++i)
     {
         move(h-(4+i), 5);
+        wprintw(stdscr, blankline);
+        move(h-(4+i), 5);
         if (i < stack_size)
-            wprintw(stdscr, "%g", stk_at(stack, i));
-        else
-            wprintw(stdscr, blankline);
+            wprintw(stdscr, "%lg", stk_at(stack, i));
     }
     
 
 
     free(blankline);
+}
+void nc_draw_input (char * iline)
+{
+    int h,w;
+    char blankline[INPUT_BUFFER_SIZE];
+    int i;
+
+    for (i = 0; i < INPUT_BUFFER_SIZE; ++i)
+        blankline[i] = ' ';
+    blankline[INPUT_BUFFER_SIZE - 1] = 0;
+
+    getmaxyx(stdscr,h,w);
+    (void)w;
+    move(h-2, 0);
+    wprintw(stdscr, blankline);
+    move(h-2, 0);
+    wprintw(stdscr, iline);
 }
 
 void nc_exit (void)
