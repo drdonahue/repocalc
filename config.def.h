@@ -42,7 +42,8 @@ static const Keybind keys[] = {
     { 0,            KEY_DOWN,         cursor_down },
     { 0,            'r',              fn_roll     },
     { 0,            '\t',             fn_swap     },
-    { 0,            '^',              fn_x_to_y   },
+    { 0,            '^',              fn_y_to_x   },
+    { 0,            'q',              fn_sqrt     },
 };
 
 

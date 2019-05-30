@@ -91,7 +91,7 @@ void fn_negate (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 
-void fn_x_to_y (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_y_to_x (stk_elem ** stack, double input, unsigned int * cursorpos)
 {
     double a,b;
     
@@ -105,3 +105,14 @@ void fn_x_to_y (stk_elem ** stack, double input, unsigned int * cursorpos)
     push(stack, pow(a,b));
 
 }
+
+void fn_sqrt (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 1)
+        return;
+    push(stack,sqrt(pop(stack)));
+}
+
