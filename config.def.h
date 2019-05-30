@@ -23,19 +23,23 @@
 typedef struct {
     int modifier;
     int code;
-    void (*func)(stk_elem **, double, unsigned int);
+    void (*func)(stk_elem **, double, unsigned int*);
 }Keybind;
 
 
 static const Keybind keys[] = {
     /* Modifier     NCurses Keycode      function */
-    { 0,            '\n',             fn_push   },
-    { 0,            'd',              fn_drop   },
-    { 0,            '+',              fn_add    },
-    { 0,            '-',              fn_sub    },
-    { 0,            '*',              fn_mul    },
-    { 0,            '/',              fn_div    },
-    { 0,            'n',              fn_negate },
+    { 0,            '\n',             fn_push     },
+    { 0,            'd',              fn_drop     },
+    { 0,            '+',              fn_add      },
+    { 0,            '-',              fn_sub      },
+    { 0,            '*',              fn_mul      },
+    { 0,            '/',              fn_div      },
+    { 0,            'n',              fn_negate   },
+    { 0,            'k',              cursor_up   },
+    { 0,            KEY_UP,           cursor_up   },
+    { 0,            'j',              cursor_down },
+    { 0,            KEY_DOWN,         cursor_down },
 };
 
 

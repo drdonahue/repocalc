@@ -16,11 +16,12 @@ void nc_loop (void)
 {
     int exit = 0;
     int c;
-    unsigned int cursor_pos;
+    unsigned int cursor_pos = 0;
     stk_elem * stack = NULL;
     char iline[INPUT_BUFFER_SIZE] = "";
     
     nc_draw_screen();
+    nc_draw_cursor(cursor_pos);
     while (!exit)
     {
         c = getch();
@@ -33,7 +34,9 @@ void nc_loop (void)
         }
         
         parse(&stack, c, &cursor_pos, iline); 
+        nc_draw_screen();
         nc_draw_stack(stack);
+        nc_draw_cursor(cursor_pos);
         nc_draw_input(iline);
     }
     stk_free(&stack);
@@ -64,7 +67,7 @@ void nc_draw_screen (void)
     /* Draw the stack lines */
     for (i = h-4; i >= 0; --i)
     {
-        wprintw(stdscr, "%2d > \n", i);
+        wprintw(stdscr, "%2d | \n", i);
     }
     for (i = 0; i < 3; ++i)
     {
@@ -72,7 +75,7 @@ void nc_draw_screen (void)
     }
 
     /* Go to the bottom left for input */
-    move(h-2, 0);
+    move(h-2, 5);
 
     /* Display to the screen */
     wrefresh(stdscr);
@@ -123,13 +126,24 @@ void nc_draw_input (char * iline)
 
     getmaxyx(stdscr,h,w);
     (void)w;
-    move(h-2, 0);
+    move(h-2, 5);
     wprintw(stdscr, blankline);
-    move(h-2, 0);
+    move(h-2, 5);
     wprintw(stdscr, iline);
 }
 
 void nc_exit (void)
 {
     endwin();
+}
+void nc_draw_cursor (unsigned int cpos)
+{
+    int h,w;
+    getmaxyx(stdscr,h,w);
+    (void)w;
+    if (cpos > 0)
+        cpos++;
+    move(h-cpos-2, 0);
+    wprintw(stdscr, ">>");
+    move(h-2, 5);
 }

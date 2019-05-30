@@ -20,7 +20,7 @@ void parse (stk_elem ** stack, int keycode, unsigned int * cursor_pos, char * il
             else
                 input = NAN;
 
-            keys[i].func(stack, input, *cursor_pos);
+            keys[i].func(stack, input, cursor_pos);
             iline[0] = 0;
         }
     }
