@@ -10,6 +10,8 @@ void fn_drop (stk_elem ** stack, double input, unsigned int * cursorpos);
 
 void fn_roll (stk_elem ** stack, double input, unsigned int * cursorpos);
 
+void fn_swap (stk_elem ** stack, double input, unsigned int * cursorpos);
+
 void cursor_up (stk_elem ** stack, double input, unsigned int * cursorpos);
 
 void cursor_down (stk_elem ** stack, double input, unsigned int * cursorpos);

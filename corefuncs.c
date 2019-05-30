@@ -18,6 +18,10 @@ void fn_roll (stk_elem ** stack, double input, unsigned int * cursorpos)
         roll(stack, *cursorpos - 1);
 }
 
+void fn_swap (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    roll(stack, 1);
+}
 void cursor_up (stk_elem ** stack, double input, unsigned int * cursorpos)
 {
     (*cursorpos)++;
