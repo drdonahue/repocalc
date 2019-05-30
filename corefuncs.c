@@ -12,6 +12,12 @@ void fn_drop (stk_elem ** stack, double input, unsigned int * cursorpos)
     pop(stack);
 }
 
+void fn_roll (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (*cursorpos > 1)
+        roll(stack, *cursorpos - 1);
+}
+
 void cursor_up (stk_elem ** stack, double input, unsigned int * cursorpos)
 {
     (*cursorpos)++;

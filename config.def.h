@@ -40,6 +40,7 @@ static const Keybind keys[] = {
     { 0,            KEY_UP,           cursor_up   },
     { 0,            'j',              cursor_down },
     { 0,            KEY_DOWN,         cursor_down },
+    { 0,            'r',              fn_roll     },
 };
 
 
