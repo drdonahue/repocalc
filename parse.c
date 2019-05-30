@@ -15,8 +15,13 @@ void parse (stk_elem ** stack, int keycode, unsigned int * cursor_pos, char * il
             modifier == keys[i].modifier &&
             keys[i].func)
         {
-            sscanf (iline, "%lg", &input);
+            if (strlen(iline))
+                sscanf (iline, "%lg", &input);
+            else
+                input = NAN;
+
             keys[i].func(stack, input, *cursor_pos);
+            iline[0] = 0;
         }
     }
     if ((keycode >= '0' && keycode <= '9') || keycode == '.' || keycode == 'e')

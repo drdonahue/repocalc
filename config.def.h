@@ -30,6 +30,11 @@ typedef struct {
 static Keybind keys[] = {
     /* Modifier     NCurses Keycode      function */
     { 0,            '\n',             fn_push },
+    { 0,            'd',              fn_drop },
+    { 0,            '+',              fn_add  },
+    { 0,            '-',              fn_sub  },
+    { 0,            '*',              fn_mul  },
+    { 0,            '/',              fn_div  },
 };
 
 

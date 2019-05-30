@@ -1,5 +1,6 @@
 #include <check.h>
 #include "../stack.h"
+#include "../corefuncs.h"
 
 START_TEST (test_stack_push_pop_single)
 {
@@ -123,7 +124,113 @@ START_TEST (test_stack_roll)
 }
 END_TEST
 
-Suite * test_suite(void)
+START_TEST (test_fn_add)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 9);
+    push(&stack, 8);
+
+    fn_add(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 17, "Add failed.");
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_sub)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 9);
+    push(&stack, 8);
+
+    fn_sub(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 1, "Subtract failed.");
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_mul)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 9);
+    push(&stack, 8);
+
+    fn_mul(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 72, "Multiply failed.");
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_div)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 27);
+    push(&stack, 3);
+
+    fn_div(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 9, "Divide failed.");
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_add_input)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 9);
+
+    fn_add(&stack, 8, 0);
+    ck_assert_msg(pop(&stack) == 17, "Add with input failed.");
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_sub_input)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 9);
+
+    fn_sub(&stack, 8, 0);
+    ck_assert_msg(pop(&stack) == 1, "Subtract with input failed.");
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_mul_input)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 9);
+
+    fn_mul(&stack, 8, 0);
+    ck_assert_msg(pop(&stack) == 72, "Multiply with input failed.");
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_div_input)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 27);
+
+    fn_div(&stack, 3, 0);
+    ck_assert_msg(pop(&stack) == 9, "Divide with input failed.");
+    stk_free(&stack);
+}
+END_TEST
+
+
+
+
+
+
+
+Suite * stack_suite(void)
 {
     Suite *s;
     TCase *tc_core;
@@ -149,16 +256,47 @@ Suite * test_suite(void)
     return s;
 }
 
+Suite * math_suite(void)
+{
+    Suite *s;
+    TCase *tc_core;
+
+    s = suite_create("Core Math");
+
+    tc_core = tcase_create("Core");
+
+
+    tcase_add_test(tc_core, test_fn_add);
+    tcase_add_test(tc_core, test_fn_sub);
+    tcase_add_test(tc_core, test_fn_mul);
+    tcase_add_test(tc_core, test_fn_div);
+
+    tcase_add_test(tc_core, test_fn_add_input);
+    tcase_add_test(tc_core, test_fn_sub_input);
+    tcase_add_test(tc_core, test_fn_mul_input);
+    tcase_add_test(tc_core, test_fn_div_input);
+
+
+    suite_add_tcase(s, tc_core);
+    return s;
+}
+
 int main (void)
 {
     int number_failed;
-    Suite *s;
-    SRunner *sr;
-    s = test_suite();
-    sr = srunner_create(s);
+    Suite *s_stack,*s_math;
+    SRunner *sr_stack,*sr_math;
+    s_stack = stack_suite();
+    sr_stack = srunner_create(s_stack);
+    s_math = math_suite();
+    sr_math = srunner_create(s_math);
 
-    srunner_run_all(sr, CK_NORMAL);
-    number_failed = srunner_ntests_failed(sr);
-    srunner_free(sr);
+
+    srunner_run_all(sr_stack, CK_NORMAL);
+    srunner_run_all(sr_math, CK_NORMAL);
+    
+    number_failed = srunner_ntests_failed(sr_stack) + srunner_ntests_failed(sr_math);
+    srunner_free(sr_stack);
+    srunner_free(sr_math);
     return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }

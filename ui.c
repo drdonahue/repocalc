@@ -71,8 +71,8 @@ void nc_draw_screen (void)
         wprintw(stdscr, blankline);
     }
 
-    /* Go to the bottom right */
-    move(h-1, w-1);
+    /* Go to the bottom left for input */
+    move(h-2, 0);
 
     /* Display to the screen */
     wrefresh(stdscr);

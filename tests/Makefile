@@ -3,13 +3,13 @@ CFLAGS = -Wall `pkg-config --cflags check`
 LDFLAGS = -lm `pkg-config --libs check`
 
 TESTS = test.o
-SOURCES = ../stack.c
-OBJ = stack.o
+SOURCES = ../stack.c ../corefuncs.c
+OBJ = stack.o corefuncs.o
 
 all: test
 
 $(OBJ) : $(SOURCES)
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $^
 
 $(TESTS) : $(TESTS:.o=.c)
 	$(CC) $(CFLAGS) -c $<
