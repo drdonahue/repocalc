@@ -27,7 +27,7 @@ typedef struct {
 }Keybind;
 
 
-static Keybind keys[] = {
+static const Keybind keys[] = {
     /* Modifier     NCurses Keycode      function */
     { 0,            '\n',             fn_push   },
     { 0,            'd',              fn_drop   },
