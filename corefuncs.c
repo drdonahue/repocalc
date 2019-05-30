@@ -91,3 +91,17 @@ void fn_negate (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 
+void fn_x_to_y (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    double a,b;
+    
+    if(input == input) /* fails on NAN */
+        push(stack, input);
+
+    if (stk_size(*stack) < 2)
+        return;
+    b = pop(stack);
+    a = pop(stack);
+    push(stack, pow(a,b));
+
+}

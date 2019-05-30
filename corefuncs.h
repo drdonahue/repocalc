@@ -26,5 +26,7 @@ void fn_div (stk_elem ** stack, double input, unsigned int * cursorpos);
 
 void fn_negate (stk_elem ** stack, double input, unsigned int * cursorpos);
 
+void fn_x_to_y (stk_elem ** stack, double input, unsigned int * cursorpos);
+
 
 #endif
