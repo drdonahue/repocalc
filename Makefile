@@ -22,8 +22,16 @@ $(OBJ): config.h config.mk
 repocalc: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(RPCLFLAGS)
 
+install: repocalc
+	mkdir -p $(INSTALL_DIR)
+	cp -f repocalc $(INSTALL_DIR)
+	chmod 755 $(INSTALL_DIR)/repocalc
+
+uninstall:
+	rm -f $(INSTALL_DIR)/repocalc
+
 clean:
 	rm -f repocalc $(OBJ)
 
-.PHONY: all options clean
+.PHONY: all options clean install uninstall
 

@@ -1,5 +1,7 @@
 VERSION = 0.1.0
 
+INSTALL_DIR = /usr/local/bin
+
 PKG_CONFIG = pkg-config
 
 INCS = `$(PKG_CONFIG) --cflags ncurses`
@@ -8,3 +10,4 @@ LIBS = -lm \
 
 RPCCFLAGS = $(INCS) -DVERSION=\"$(VERSION)\" -Wall -pedantic -Os
 RPCLFLAGS = $(LIBS)
+
