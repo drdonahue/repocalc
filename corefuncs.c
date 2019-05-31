@@ -155,7 +155,6 @@ void fn_square (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Calculate exp(x) */
-
 void fn_exp (stk_elem ** stack, double input, unsigned int * cursorpos)
 {
     if (input == input)
@@ -165,4 +164,16 @@ void fn_exp (stk_elem ** stack, double input, unsigned int * cursorpos)
         return;
 
     push(stack,exp(pop(stack)));
+}
+
+/* Calculate ln(x) */
+void fn_ln (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 1)
+        return;
+
+    push(stack,log(pop(stack)));
 }

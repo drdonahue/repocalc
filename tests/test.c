@@ -333,15 +333,36 @@ START_TEST (test_fn_exp_input)
 {
     stk_elem * stack = NULL;
 
-    push(&stack, 0);
-    
-    fn_exp(&stack, NAN, 0);
+    fn_exp(&stack, 0, 0);
     ck_assert_msg(pop(&stack) == 1, "exp(x) with input failed.");
     stk_free(&stack);
 
 }
 END_TEST
 
+START_TEST (test_fn_ln)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 1);
+    
+    fn_ln(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 0, "ln(x) failed.");
+    stk_free(&stack);
+
+}
+END_TEST
+
+START_TEST (test_fn_ln_input)
+{
+    stk_elem * stack = NULL;
+
+    fn_ln(&stack, 1, 0);
+    ck_assert_msg(pop(&stack) == 0, "ln(x) with input failed.");
+    stk_free(&stack);
+
+}
+END_TEST
 
 
 
@@ -403,6 +424,9 @@ Suite * math_suite(void)
 
     tcase_add_test(tc_core, test_fn_exp);
     tcase_add_test(tc_core, test_fn_exp_input);
+
+    tcase_add_test(tc_core, test_fn_ln);
+    tcase_add_test(tc_core, test_fn_ln_input);
 
     suite_add_tcase(s, tc_core);
     return s;
