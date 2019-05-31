@@ -177,3 +177,15 @@ void fn_ln (stk_elem ** stack, double input, unsigned int * cursorpos)
 
     push(stack,log(pop(stack)));
 }
+
+/* Calculate log(x) */
+void fn_log (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 1)
+        return;
+
+    push(stack,log10(pop(stack)));
+}
