@@ -45,6 +45,7 @@ typedef struct {
  * fn_y_to_x        y ^ x
  * fn_sqrt          take the square root of x
  * fn_square        x ^ 2
+ * fn_exp           e ^ x
  */
 
 static const Keybind keys[] = {
