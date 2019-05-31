@@ -415,7 +415,29 @@ START_TEST (test_fn_logn_input)
 }
 END_TEST
 
+START_TEST (test_fn_inv)
+{
+    stk_elem * stack = NULL;
 
+    push(&stack, 2);
+    
+    fn_inv(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 0.5, "1/x failed.");
+    stk_free(&stack);
+
+}
+END_TEST
+
+START_TEST (test_fn_inv_input)
+{
+    stk_elem * stack = NULL;
+
+    fn_inv(&stack, 2, 0);
+    ck_assert_msg(pop(&stack) == 0.5, "1/x with input failed.");
+    stk_free(&stack);
+
+}
+END_TEST
 
 
 
@@ -484,6 +506,8 @@ Suite * math_suite(void)
     tcase_add_test(tc_core, test_fn_logn);
     tcase_add_test(tc_core, test_fn_logn_input);
 
+    tcase_add_test(tc_core, test_fn_inv);
+    tcase_add_test(tc_core, test_fn_inv_input);
 
     suite_add_tcase(s, tc_core);
     return s;

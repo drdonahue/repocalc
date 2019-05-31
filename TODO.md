@@ -8,10 +8,6 @@
 - Bottom bar status indicator
 
 # Functions
-## Core Functions
-
-- 1/x
-
 ## Trig Functions
 
 - sin

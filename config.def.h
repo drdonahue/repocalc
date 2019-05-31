@@ -48,6 +48,8 @@ typedef struct {
  * fn_exp           e ^ x
  * fn_ln            ln(x)
  * fn_log           log(x)
+ * fn_logn          log_x(y)
+ * fn_inv           1 / x
  */
 
 static const Keybind keys[] = {
@@ -73,6 +75,7 @@ static const Keybind keys[] = {
     {  'l',              fn_ln       },
     {  'L',              fn_log      },
     {  'b',              fn_logn     },
+    {  'i',              fn_inv      },
 };
 
 
