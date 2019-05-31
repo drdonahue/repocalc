@@ -14,7 +14,7 @@
  */ 
 
 /*
-void fn_sinh (stk_elem ** stack, double input, unsigned int cursorpos)
+void fn_sinh (stk_elem ** stack, double input, unsigned int * cursorpos)
 {
     double x;
     if (input==input)
