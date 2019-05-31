@@ -2,7 +2,8 @@
 ## v0.2.2
 
 RepoCalc is an RPN calculator inspired by the [Suckless Philosophy](https://suckless.org/philosophy) that uses an ncurses UI. It is currently under heavy development, as there are
-several functions to add to the core set (see [TODO](TODO.md)), but it is fully usable as-is. 
+a few more features to implemnt (see [TODO](TODO.md)), but it is fully usable as-is. Note that, until release 1.0.0, the interfaces
+used for custom functions may change slightly.
 
 # Installation
 
@@ -21,7 +22,8 @@ sudo make install
 # Configuration
 
 All of the keybindings can be edited in config.h (if it doesn't exist run `make` or `cp config.def.h config.h`).
-There are 2 special keybindings that you can change by modifying the define statements. The other keybindings can
+There are 2 special keybindings that you can change by modifying the define statements: Backspace and Exit.
+The bindings for setting precision and changing the display mode are also set with define statements. All other keybindings can
 be changed by editing the `Keybind keys[]` initialization list. This is also where new keybindings can be added.
 
 Custom functions can be defined in customfuncs.h and customfuncs.c. They follow this template:
