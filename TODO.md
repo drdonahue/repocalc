@@ -8,14 +8,14 @@
 - Bottom bar status indicator
 
 # Functions
-# Core Functions
+## Core Functions
 
 - exp(x)
 - ln(x)
 - log(x)
 - log\_x(y)
 
-# Trig Functions
+## Trig Functions
 
 - sin
 - cos
