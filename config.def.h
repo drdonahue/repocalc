@@ -8,6 +8,7 @@
 /* function header files */
 
 #include "corefuncs.h"
+#include "trigfuncs.h"
 
 /* Macros */
 #define LENGTH(X)   (sizeof X / sizeof X[0])
@@ -50,6 +51,7 @@ typedef struct {
  * fn_log           log(x)
  * fn_logn          log_x(y)
  * fn_inv           1 / x
+ * fn_sin           sin(x)
  */
 
 static const Keybind keys[] = {
@@ -76,6 +78,7 @@ static const Keybind keys[] = {
     {  'L',              fn_log      },
     {  'b',              fn_logn     },
     {  'i',              fn_inv      },
+    {  's',              fn_sin      },
 };
 
 

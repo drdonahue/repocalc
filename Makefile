@@ -1,6 +1,6 @@
 include config.mk
 
-SRC = repocalc.c ui.c stack.c parse.c corefuncs.c
+SRC = repocalc.c ui.c stack.c parse.c corefuncs.c trigfuncs.c
 OBJ = $(SRC:.c=.o)
 
 all: options repocalc

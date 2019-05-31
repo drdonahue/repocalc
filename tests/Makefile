@@ -3,8 +3,8 @@ CFLAGS = -Wall `pkg-config --cflags check`
 LDFLAGS = -lm `pkg-config --libs check`
 
 TESTS = test.o
-SOURCES = ../stack.c ../corefuncs.c
-OBJ = stack.o corefuncs.o
+SOURCES = ../stack.c ../corefuncs.c ../trigfuncs.c
+OBJ = stack.o corefuncs.o trigfuncs.o
 
 all: test
 
