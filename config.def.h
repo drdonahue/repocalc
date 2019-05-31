@@ -72,6 +72,7 @@ static const Keybind keys[] = {
     {  'E',              fn_exp      },
     {  'l',              fn_ln       },
     {  'L',              fn_log      },
+    {  'b',              fn_logn     },
 };
 
 

@@ -388,6 +388,34 @@ START_TEST (test_fn_log_input)
 }
 END_TEST
 
+START_TEST (test_fn_logn)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 16);
+    push(&stack, 2);
+    
+    fn_logn(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 4, "log_x(y) failed.");
+    stk_free(&stack);
+
+}
+END_TEST
+
+START_TEST (test_fn_logn_input)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 16);
+
+    fn_logn(&stack, 2, 0);
+    ck_assert_msg(pop(&stack) == 4, "log_x(y) with input failed.");
+    stk_free(&stack);
+
+}
+END_TEST
+
+
 
 
 
@@ -453,6 +481,8 @@ Suite * math_suite(void)
     tcase_add_test(tc_core, test_fn_ln_input);
     tcase_add_test(tc_core, test_fn_log);
     tcase_add_test(tc_core, test_fn_log_input);
+    tcase_add_test(tc_core, test_fn_logn);
+    tcase_add_test(tc_core, test_fn_logn_input);
 
 
     suite_add_tcase(s, tc_core);

@@ -189,3 +189,18 @@ void fn_log (stk_elem ** stack, double input, unsigned int * cursorpos)
 
     push(stack,log10(pop(stack)));
 }
+/* Calculate log_x(y) */
+void fn_logn (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    double x,y;
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 2)
+        return;
+    
+    x = pop(stack);
+    y = pop(stack);
+
+    push(stack,log(y) / log(x));
+}

@@ -40,4 +40,6 @@ void fn_ln (stk_elem ** stack, double input, unsigned int * cursorpos);
 
 void fn_log (stk_elem ** stack, double input, unsigned int * cursorpos);
 
+void fn_logn (stk_elem ** stack, double input, unsigned int * cursorpos);
+
 #endif /* __COREFUNCS_H */

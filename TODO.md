@@ -10,7 +10,7 @@
 # Functions
 ## Core Functions
 
-- log\_x(y)
+- 1/x
 
 ## Trig Functions
 
