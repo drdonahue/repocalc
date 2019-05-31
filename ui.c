@@ -29,12 +29,14 @@ void nc_loop (void)
     unsigned int cursor_pos = 0;
     stk_elem * stack = NULL;
     char iline[INPUT_BUFFER_SIZE] = "";
+
+    display_opts disp = DEFAULT_DISPLAY_OPTS;
     
     while (!exit)
     {
         /* Draw everything */
         nc_draw_screen();
-        nc_draw_stack(stack);
+        nc_draw_stack(stack, disp);
         nc_draw_cursor(cursor_pos);
         nc_draw_input(iline);
 
@@ -93,15 +95,27 @@ void nc_draw_screen (void)
     free(blankline);
 
 }
-void nc_draw_stack (const stk_elem * stack)
+void nc_draw_stack (const stk_elem * stack, display_opts disp)
 {
     int h,w,i,stack_size;
     char * blankline;
+    char fmt[5] = "";
+    int eng_pwr;
+    double eng_dec;
 
     getmaxyx(stdscr, h, w);
 
     /* create a blank line for empty stack elements */
     blankline = (char *) malloc(sizeof(char) * w-5);
+
+    if( disp.m == NRM )
+    {
+        strcpy(fmt, "%.*g");
+    }
+    else if (disp.m == SCI)
+    {
+        strcpy(fmt, "%.*e");
+    }
 
     for (i = 0; i < w-6; ++i)
     {
@@ -117,7 +131,34 @@ void nc_draw_stack (const stk_elem * stack)
         wprintw(stdscr, blankline);
         move(h-(4+i), 5);
         if (i < stack_size)
-            wprintw(stdscr, "%lg", stk_at(stack, i));
+        {
+            /* manually display engineering format, as there is no printf format for it */
+            if (disp.m == ENG)
+            {
+                eng_pwr = (int) log10 (stk_at(stack,i));
+                if (eng_pwr > 0)
+                {
+                    eng_pwr = (eng_pwr / 3)*3;
+                }
+                else
+                {
+                    eng_pwr = (-eng_pwr + 3)/3 * -3;
+                }
+                eng_dec = stk_at(stack, i) * pow(10, -eng_pwr);
+
+                if(eng_dec >= 1000)
+                {
+                    eng_pwr += 3;
+                    eng_dec /= 1000.0;
+                }
+
+                wprintw(stdscr, "%.*lfe%d", disp.p-3, eng_dec, eng_pwr);   
+            }
+            else
+            {
+                wprintw(stdscr, fmt, disp.p, stk_at(stack, i));
+            }
+        }
     }
     
 

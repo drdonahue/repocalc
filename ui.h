@@ -7,12 +7,21 @@
 #include "stack.h"
 #include "parse.h"
 
+typedef enum { SCI, ENG, NRM } mode;
+
+typedef struct {
+    mode m;
+    unsigned int p;
+}display_opts;
+
+
 void nc_init (void);
 void nc_loop (void);
 void nc_draw_screen(void);
-void nc_draw_stack (const stk_elem * stack);
+void nc_draw_stack (const stk_elem * stack, display_opts disp);
 void nc_draw_input (char * iline);
 void nc_draw_cursor (unsigned int cpos);
 void nc_exit (void);
+
 
 #endif /* __UI_H */

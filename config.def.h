@@ -17,6 +17,13 @@
 /* Constants */
 #define INPUT_BUFFER_SIZE 50
 
+/* Option Macros */
+
+/*Default display format for numbers on the stack*/
+/* .m options are NRM (automatic), SCI (scientific), and ENG (engineering) */
+/* .p sets the number of digits to display. */
+#define DEFAULT_DISPLAY_OPTS {.m = NRM, .p = 7}
+
 /* Special keybindings */
 
 #define K_EXIT KEY_F(10)
