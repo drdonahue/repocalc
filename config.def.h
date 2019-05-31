@@ -21,31 +21,30 @@
 #define K_DELETE KEY_BACKSPACE
 
 typedef struct {
-    int modifier;
     int code;
     void (*func)(stk_elem **, double, unsigned int*);
 }Keybind;
 
 
 static const Keybind keys[] = {
-    /* Modifier     NCurses Keycode      function */
-    { 0,            '\n',             fn_push     },
-    { 0,            'd',              fn_drop     },
-    { 0,            '+',              fn_add      },
-    { 0,            '-',              fn_sub      },
-    { 0,            '*',              fn_mul      },
-    { 0,            '/',              fn_div      },
-    { 0,            'n',              fn_negate   },
-    { 0,            'k',              cursor_up   },
-    { 0,            KEY_UP,           cursor_up   },
-    { 0,            'j',              cursor_down },
-    { 0,            KEY_DOWN,         cursor_down },
-    { 0,            'r',              fn_roll     },
-    { 0,            '\t',             fn_swap     },
-    { 0,            '^',              fn_y_to_x   },
-    { 0,            'q',              fn_sqrt     },
-    { 0,            'Q',              fn_square   },
-    { 0,            'u',              fn_dup      },
+    /* NCurses Keycode   function   */
+    {  '\n',             fn_push     },
+    {  'd',              fn_drop     },
+    {  '+',              fn_add      },
+    {  '-',              fn_sub      },
+    {  '*',              fn_mul      },
+    {  '/',              fn_div      },
+    {  'n',              fn_negate   },
+    {  'k',              cursor_up   },
+    {  KEY_UP,           cursor_up   },
+    {  'j',              cursor_down },
+    {  KEY_DOWN,         cursor_down },
+    {  'r',              fn_roll     },
+    {  '\t',             fn_swap     },
+    {  '^',              fn_y_to_x   },
+    {  'q',              fn_sqrt     },
+    {  'Q',              fn_square   },
+    {  'u',              fn_dup      },
 };
 
 
