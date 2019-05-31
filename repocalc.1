@@ -1,0 +1,114 @@
+.TH REPOCALC 1 repocalc\-VERSION
+.SH NAME
+repocalc \- Reverse Polish Calculator 
+.SH SYNOPSIS
+.B repocalc
+.RB [ \-v ]
+.RB [ \-h ]
+.SH DESCRIPTION
+.B repocalc
+is a RPN calculator for the terminal.
+.SH OPTIONS
+.TP
+.B \-v
+display version
+.TP
+.BI \-h
+display usage information
+.SH DEFAULT KEY BINDINGS
+.TP
+.B RETURN
+Push the current input line to the stack
+.TP
+.B d
+Drop the top element of the stack
+.TP
+.B u
+Duplicate the top element of the stack
+.TP
+.B TAB
+Swap x and y on the stack
+.TP
+.B k, UP
+Move the cursor up 1 line
+.TP
+.B j, DOWN
+Move the cursor down 1 line
+.TP
+.B r
+Roll the stack about the cursor. This puts the
+element at the cursor to the top of the stack
+and shifts the elements on top of it down.
+.TP
+.B +
+Add x and y
+.TP
+.B -
+Subtract x from y
+.TP
+.B *
+Multiply x by y
+.TP
+.B /
+Divide y by x
+.TP
+.B n
+Negate x
+.TP
+.B ^
+Compute y^x
+.TP
+.B q
+Take the square root of x
+.TP
+.B SHIFT+Q
+Square x
+.TP
+.B SHIFT+E
+Compute e^x
+.TP
+.B l
+Compute ln(x)
+.TP
+.B SHIFT+L
+Compute log(x)
+.TP
+.B b
+Compute log_x(y)
+.TP
+.B i
+Compute 1/x
+.TP
+.B p
+Push pi to the stack
+.TP
+.B s
+Compute sin(x)
+.TP
+.B c
+Compute cos(x)
+.TP
+.B t
+Compute tan(x)
+.TP
+.B SHIFT+S
+Compute arcsin(x)
+.TP
+.B SHIFT+C
+Compute arccos(x)
+.TP
+.B SHIFT+T
+Compute arctan(x)
+.SH CUSTOMIZATION
+.B repocalc
+can be customized by altering config.h and recompiling the source
+code.
+.SH AUTHORS
+David Donahue
+.SH LICENSE
+MIT License
+.SH SEE ALSO
+.BR ncurses (1)
+.SH BUGS
+See the TODO.md file in the distribution.
+

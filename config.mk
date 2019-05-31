@@ -1,6 +1,7 @@
-VERSION = 0.1.3
+VERSION = 0.2.0
 
 INSTALL_DIR = /usr/local/bin
+MAN_DIR = /usr/local/share/man/
 
 PKG_CONFIG = pkg-config
 
