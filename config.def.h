@@ -52,6 +52,7 @@ typedef struct {
  * fn_logn          log_x(y)
  * fn_inv           1 / x
  * fn_sin           sin(x)
+ * fn_cos           cos(x)
  */
 
 static const Keybind keys[] = {
@@ -79,6 +80,7 @@ static const Keybind keys[] = {
     {  'b',              fn_logn     },
     {  'i',              fn_inv      },
     {  's',              fn_sin      },
+    {  'c',              fn_cos      },
 };
 
 

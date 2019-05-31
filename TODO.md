@@ -10,7 +10,6 @@
 # Functions
 ## Trig Functions
 
-- cos
 - tan
 - csc
 - sec
