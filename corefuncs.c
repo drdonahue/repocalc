@@ -22,6 +22,16 @@ void fn_swap (stk_elem ** stack, double input, unsigned int * cursorpos)
 {
     roll(stack, 1);
 }
+
+void fn_dup (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (!stk_size(*stack))
+        return;
+
+    /* push the value of the top element */
+    push(stack, stk_at(*stack,0));
+}
+
 void cursor_up (stk_elem ** stack, double input, unsigned int * cursorpos)
 {
     (*cursorpos)++;

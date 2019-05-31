@@ -28,8 +28,9 @@ void fn_negate (stk_elem ** stack, double input, unsigned int * cursorpos);
 
 void fn_y_to_x (stk_elem ** stack, double input, unsigned int * cursorpos);
 
-
 void fn_sqrt (stk_elem ** stack, double input, unsigned int * cursorpos);
+
+void fn_dup (stk_elem ** stack, double input, unsigned int * cursorpos);
 
 
 #endif

@@ -44,6 +44,7 @@ static const Keybind keys[] = {
     { 0,            '\t',             fn_swap     },
     { 0,            '^',              fn_y_to_x   },
     { 0,            'q',              fn_sqrt     },
+    { 0,            'u',              fn_dup      },
 };
 
 
