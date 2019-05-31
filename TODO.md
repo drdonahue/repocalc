@@ -10,7 +10,6 @@
 # Functions
 ## Core Functions
 
-- exp(x)
 - ln(x)
 - log(x)
 - log\_x(y)

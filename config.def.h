@@ -29,7 +29,7 @@ typedef struct {
 /* Function keybindings */
 
 /* x is the top of the stack or input line, and y is the next element of the stack */
-/*Available functions:
+/* Available functions:
  * fn_push          push the input line to the stack
  * fn_drop          drop x
  * fn_roll          roll the stack about the cursor position
@@ -66,6 +66,7 @@ static const Keybind keys[] = {
     {  'q',              fn_sqrt     },
     {  'Q',              fn_square   },
     {  'u',              fn_dup      },
+    {  'E',              fn_exp      },
 };
 
 

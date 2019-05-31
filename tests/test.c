@@ -242,7 +242,7 @@ START_TEST (test_fn_negate_input)
     
     
     fn_negate(&stack, 2, 0);
-    ck_assert_msg(pop(&stack) == -2, "Negate failed.");
+    ck_assert_msg(pop(&stack) == -2, "Negate with input failed.");
     stk_free(&stack);
 }
 END_TEST
@@ -267,7 +267,7 @@ START_TEST (test_fn_y_to_x_input)
     push(&stack, 2);
     
     fn_y_to_x(&stack, 3, 0);
-    ck_assert_msg(pop(&stack) == 8, "y^x failed.");
+    ck_assert_msg(pop(&stack) == 8, "y^x with input failed.");
     stk_free(&stack);
 }
 END_TEST
@@ -289,7 +289,7 @@ START_TEST (test_fn_sqrt_input)
     stk_elem * stack = NULL;
     
     fn_sqrt(&stack, 9, 0);
-    ck_assert_msg(pop(&stack) == 3, "Square root failed.");
+    ck_assert_msg(pop(&stack) == 3, "Square root with input failed.");
     stk_free(&stack);
 }
 END_TEST
@@ -301,7 +301,7 @@ START_TEST (test_fn_square)
     push(&stack, 3);
     
     fn_square(&stack, NAN, 0);
-    ck_assert_msg(pop(&stack) == 9, "Square root failed.");
+    ck_assert_msg(pop(&stack) == 9, "Square failed.");
     stk_free(&stack);
 }
 END_TEST
@@ -311,10 +311,37 @@ START_TEST (test_fn_square_input)
     stk_elem * stack = NULL;
     
     fn_square(&stack, 3, 0);
-    ck_assert_msg(pop(&stack) == 9, "Square root failed.");
+    ck_assert_msg(pop(&stack) == 9, "Square with input failed.");
     stk_free(&stack);
 }
 END_TEST
+
+START_TEST (test_fn_exp)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 0);
+    
+    fn_exp(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 1, "exp(x) failed.");
+    stk_free(&stack);
+
+}
+END_TEST
+
+START_TEST (test_fn_exp_input)
+{
+    stk_elem * stack = NULL;
+
+    push(&stack, 0);
+    
+    fn_exp(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 1, "exp(x) with input failed.");
+    stk_free(&stack);
+
+}
+END_TEST
+
 
 
 
@@ -373,6 +400,9 @@ Suite * math_suite(void)
     tcase_add_test(tc_core, test_fn_sqrt_input);
     tcase_add_test(tc_core, test_fn_square);
     tcase_add_test(tc_core, test_fn_square_input);
+
+    tcase_add_test(tc_core, test_fn_exp);
+    tcase_add_test(tc_core, test_fn_exp_input);
 
     suite_add_tcase(s, tc_core);
     return s;
