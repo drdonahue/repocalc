@@ -107,7 +107,7 @@ void nc_draw_screen (void)
 
     /* print bottom bar */
     move(h-1,0);
-    wprintw(stdscr, "Set Precision: %s  Auto: %s  Scientific: %s  Engineering: %s  ", keyname_h(K_PRECISION), keyname_h(K_NRM), keyname_h(K_SCI), keyname_h(K_ENG));
+    wprintw(stdscr, "Set Precision: %s  AUTO: %s  SCI: %s  ENG: %s  ", keyname_h(K_PRECISION), keyname_h(K_NRM), keyname_h(K_SCI), keyname_h(K_ENG));
     wprintw(stdscr, "Exit: %s  ", keyname_h (K_EXIT));
 
     /* Go to the bottom left for input */
