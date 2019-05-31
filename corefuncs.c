@@ -126,3 +126,16 @@ void fn_sqrt (stk_elem ** stack, double input, unsigned int * cursorpos)
     push(stack,sqrt(pop(stack)));
 }
 
+void fn_square (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    double x;
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 1)
+        return;
+
+    x = pop(stack);
+    push(stack,x*x);
+}
+

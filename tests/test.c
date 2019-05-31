@@ -294,7 +294,27 @@ START_TEST (test_fn_sqrt_input)
 }
 END_TEST
 
+START_TEST (test_fn_square)
+{
+    stk_elem * stack = NULL;
+    
+    push(&stack, 3);
+    
+    fn_square(&stack, NAN, 0);
+    ck_assert_msg(pop(&stack) == 9, "Square root failed.");
+    stk_free(&stack);
+}
+END_TEST
 
+START_TEST (test_fn_square_input)
+{
+    stk_elem * stack = NULL;
+    
+    fn_square(&stack, 3, 0);
+    ck_assert_msg(pop(&stack) == 9, "Square root failed.");
+    stk_free(&stack);
+}
+END_TEST
 
 
 
@@ -351,6 +371,8 @@ Suite * math_suite(void)
     tcase_add_test(tc_core, test_fn_y_to_x_input);
     tcase_add_test(tc_core, test_fn_sqrt);
     tcase_add_test(tc_core, test_fn_sqrt_input);
+    tcase_add_test(tc_core, test_fn_square);
+    tcase_add_test(tc_core, test_fn_square_input);
 
     suite_add_tcase(s, tc_core);
     return s;
