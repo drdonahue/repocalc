@@ -6,7 +6,7 @@ several functions to add to the core set (see [TODO](TODO.md)), but it is fully 
 
 # Installation
 
-RepoCalc *shold* build on any \*nix system that has a c compiler, a standard library, ncurses, pkg-config, and make. If
+RepoCalc *should* build on any \*nix system that has a c compiler, a standard library, ncurses, pkg-config, and make. If
 it fails to build on your system, please report the issue on the [Issues](https://github.com/drdonahue/repocalc/issues) page
 so it can be fixed. I hope to achieve a fair degree of platform-independence, so I will try and fix compatibility issues as they arise.
 
