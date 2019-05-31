@@ -3,12 +3,22 @@
 
 void nc_init (void)
 {
+    /* start ncurses window */
     initscr();
+    
+    /* do not buffer characters until newline */
     cbreak();
+
+    /* do not echo input to the console */
     noecho();
+
+    /* save the tty settings so they can be restored */
     savetty();
+
+    /* disable multibyte characters, eg ^[[21~ for F10, in favor of KEY_* bindings */
     keypad(stdscr, TRUE);
     
+    /* clear the screen */
     clear();
 }
 
@@ -20,27 +30,27 @@ void nc_loop (void)
     stk_elem * stack = NULL;
     char iline[INPUT_BUFFER_SIZE] = "";
     
-    nc_draw_screen();
-    nc_draw_cursor(cursor_pos);
     while (!exit)
     {
-        c = getch();
-        exit = ( c == K_EXIT );
-        /* Redraw the screen if the terminal is resized */
-        if (c == KEY_RESIZE)
-        {
-            nc_draw_screen();
-            nc_draw_stack(stack);
-        }
-        
-        parse(&stack, c, &cursor_pos, iline); 
+        /* Draw everything */
         nc_draw_screen();
         nc_draw_stack(stack);
         nc_draw_cursor(cursor_pos);
         nc_draw_input(iline);
-    }
-    stk_free(&stack);
 
+        /* wait for and get a character */
+        c = getch();
+        
+        /* end the program on K_EXIT */
+        exit = ( c == K_EXIT );
+
+        
+        /* Pass the character off to parse to be handled. */
+        parse(&stack, c, &cursor_pos, iline); 
+    }
+
+    /* free the stack before it goes out of scope */
+    stk_free(&stack);
 }
 
 void nc_draw_screen (void)
@@ -116,19 +126,23 @@ void nc_draw_stack (const stk_elem * stack)
 }
 void nc_draw_input (char * iline)
 {
-    int h,w;
+    int h,i;
     char blankline[INPUT_BUFFER_SIZE];
-    int i;
 
+    /* create a blank line for the input space */
     for (i = 0; i < INPUT_BUFFER_SIZE; ++i)
         blankline[i] = ' ';
     blankline[INPUT_BUFFER_SIZE - 1] = 0;
 
-    getmaxyx(stdscr,h,w);
-    (void)w;
+    h = getmaxy(stdscr);
     move(h-2, 5);
+
+    /* blank the input line */
     wprintw(stdscr, blankline);
+
     move(h-2, 5);
+
+    /* draw the input line */
     wprintw(stdscr, iline);
 }
 
@@ -136,13 +150,17 @@ void nc_exit (void)
 {
     endwin();
 }
+
 void nc_draw_cursor (unsigned int cpos)
 {
-    int h,w;
-    getmaxyx(stdscr,h,w);
-    (void)w;
+    int h;
+    h = getmaxy(stdscr);
+
+    /* Account for the blank line between the input and stack */
     if (cpos > 0)
         cpos++;
+
+    /* Draw the cursor and return to the input line */
     move(h-cpos-2, 0);
     wprintw(stdscr, ">>");
     move(h-2, 5);

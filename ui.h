@@ -15,4 +15,4 @@ void nc_draw_input (char * iline);
 void nc_draw_cursor (unsigned int cpos);
 void nc_exit (void);
 
-#endif
+#endif /* __UI_H */

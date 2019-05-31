@@ -15,7 +15,7 @@
 /* Constants */
 #define INPUT_BUFFER_SIZE 50
 
-/* keybindings */
+/* Special keybindings */
 
 #define K_EXIT KEY_F(10)
 #define K_DELETE KEY_BACKSPACE
@@ -25,6 +25,27 @@ typedef struct {
     void (*func)(stk_elem **, double, unsigned int*);
 }Keybind;
 
+
+/* Function keybindings */
+
+/* x is the top of the stack or input line, and y is the next element of the stack */
+/*Available functions:
+ * fn_push          push the input line to the stack
+ * fn_drop          drop x
+ * fn_roll          roll the stack about the cursor position
+ * fn_swap          swap x and y on the stack
+ * fn_dup           duplicate x on the stack
+ * cursor_up        move the cursor up 1 line
+ * cursor_down      move the cursor down 1 line
+ * fn_add           y + x
+ * fn_sub           y - x
+ * fn_mul           y * x
+ * fn_div           y / x
+ * fn_negate        -1 * x
+ * fn_y_to_x        y ^ x
+ * fn_sqrt          take the square root of x
+ * fn_square        x ^ 2
+ */
 
 static const Keybind keys[] = {
     /* NCurses Keycode   function   */
@@ -48,4 +69,4 @@ static const Keybind keys[] = {
 };
 
 
-#endif
+#endif /* __CONFIG_H */
