@@ -9,6 +9,7 @@
 
 #include "corefuncs.h"
 #include "trigfuncs.h"
+#include "customfuncs.h"
 
 /* Macros */
 #define LENGTH(X)   (sizeof X / sizeof X[0])
@@ -91,7 +92,6 @@ static const Keybind keys[] = {
     {  'C',              fn_acos     },
     {  'T',              fn_atan     },
     {  'p',              fn_push_pi  },
-
 };
 
 
