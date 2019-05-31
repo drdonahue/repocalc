@@ -51,6 +51,7 @@ typedef struct {
  * fn_log           log(x)
  * fn_logn          log_x(y)
  * fn_inv           1 / x
+ * fn_push_pi       Push pi to the stack
  * fn_sin           sin(x)
  * fn_cos           cos(x)
  * fn_tan           tan(x)
@@ -83,6 +84,7 @@ static const Keybind keys[] = {
     {  's',              fn_sin      },
     {  'c',              fn_cos      },
     {  't',              fn_tan      },
+    {  'p',              fn_push_pi  },
 };
 
 

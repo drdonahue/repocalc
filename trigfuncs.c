@@ -40,3 +40,12 @@ void fn_tan (stk_elem ** stack, double input, unsigned int * cursorpos)
     push(stack, tan(pop(stack)));
 
 }
+
+void fn_push_pi (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (input == input)
+        push(stack, input);
+
+    push(stack, M_PI);
+
+}

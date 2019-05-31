@@ -10,6 +10,8 @@ void fn_cos (stk_elem ** stack, double input, unsigned int * cursorpos);
 
 void fn_tan (stk_elem ** stack, double input, unsigned int * cursorpos);
 
+void fn_push_pi (stk_elem ** stack, double input, unsigned int * cursorpos);
+
 
 
 #endif /*__TRIGFUNCS_H*/

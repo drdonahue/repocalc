@@ -16,4 +16,3 @@
 - asin
 - acos
 - atan
-- pi (push the constant to the stack)
