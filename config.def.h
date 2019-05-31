@@ -53,6 +53,7 @@ typedef struct {
  * fn_inv           1 / x
  * fn_sin           sin(x)
  * fn_cos           cos(x)
+ * fn_tan           tan(x)
  */
 
 static const Keybind keys[] = {
@@ -81,6 +82,7 @@ static const Keybind keys[] = {
     {  'i',              fn_inv      },
     {  's',              fn_sin      },
     {  'c',              fn_cos      },
+    {  't',              fn_tan      },
 };
 
 

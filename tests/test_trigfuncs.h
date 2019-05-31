@@ -18,6 +18,16 @@ START_TEST (test_fn_cos)
 }
 END_TEST
 
+START_TEST (test_fn_tan)
+{
+    stk_elem * stack = NULL;
+    push(&stack, M_PI/2);
+    fn_tan (&stack, NAN, 0);
+    ck_assert (abs(pop(&stack) - 1) < 0.000001);
+    stk_free(&stack);
+}
+END_TEST
+
 Suite * trig_suite(void)
 {
     Suite *s;
@@ -31,6 +41,8 @@ Suite * trig_suite(void)
     tcase_add_test(tc_core, test_fn_sin);
     
     tcase_add_test(tc_core, test_fn_cos);
+
+    tcase_add_test(tc_core, test_fn_tan);
     
     suite_add_tcase(s, tc_core);
     return s;
