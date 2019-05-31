@@ -29,6 +29,7 @@ void nc_loop (void)
     unsigned int cursor_pos = 0;
     stk_elem * stack = NULL;
     char iline[INPUT_BUFFER_SIZE] = "";
+    double tmp;
 
     display_opts disp = DEFAULT_DISPLAY_OPTS;
     
@@ -47,6 +48,24 @@ void nc_loop (void)
         exit = ( c == K_EXIT );
 
         
+        if ( c == K_NRM)
+            disp.m = NRM;
+        else if (c == K_ENG)
+            disp.m = ENG;
+        else if (c == K_SCI)
+            disp.m = SCI;
+        else if (c == K_PRECISION)
+        {
+            if (strlen(iline))
+            { 
+                sscanf(iline,"%lf", &tmp);
+                push(&stack, tmp);
+                iline[0] = 0;
+            }
+            tmp = pop(&stack);
+            if(tmp && tmp > 0)
+                disp.p = (unsigned int) tmp;
+        }
         /* Pass the character off to parse to be handled. */
         parse(&stack, c, &cursor_pos, iline); 
     }
@@ -85,6 +104,11 @@ void nc_draw_screen (void)
     {
         wprintw(stdscr, blankline);
     }
+
+    /* print bottom bar */
+    move(h-1,0);
+    wprintw(stdscr, "Set Precision: %s  Auto: %s  Scientific: %s  Engineering: %s  ", keyname_h(K_PRECISION), keyname_h(K_NRM), keyname_h(K_SCI), keyname_h(K_ENG));
+    wprintw(stdscr, "Exit: %s  ", keyname_h (K_EXIT));
 
     /* Go to the bottom left for input */
     move(h-2, 5);
@@ -152,7 +176,7 @@ void nc_draw_stack (const stk_elem * stack, display_opts disp)
                     eng_dec /= 1000.0;
                 }
 
-                wprintw(stdscr, "%.*lfe%d", disp.p-3, eng_dec, eng_pwr);   
+                wprintw(stdscr, "%.*lfe+%02d", disp.p, eng_dec, eng_pwr);   
             }
             else
             {
@@ -205,4 +229,20 @@ void nc_draw_cursor (unsigned int cpos)
     move(h-cpos-2, 0);
     wprintw(stdscr, ">>");
     move(h-2, 5);
+}
+
+const char * keyname_h (int c)
+{
+    const char *str,*tmp;
+
+    str = keyname(c);
+
+    tmp = strstr(str, "KEY_");
+    if (tmp == NULL )
+    {
+        return str; /* Regular character, no KEY_ prefix */
+    }
+
+    str += 4; /* Toss out the KEY_ prefix for special keys */
+    return str;
 }

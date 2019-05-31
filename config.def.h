@@ -29,6 +29,12 @@
 #define K_EXIT KEY_F(10)
 #define K_DELETE KEY_BACKSPACE
 
+/* keys for precision and display format */
+#define K_PRECISION KEY_F(5)
+#define K_NRM KEY_F(6)
+#define K_SCI KEY_F(7)
+#define K_ENG KEY_F(8)
+
 typedef struct {
     int code;
     void (*func)(stk_elem **, double, unsigned int*);

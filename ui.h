@@ -22,6 +22,7 @@ void nc_draw_stack (const stk_elem * stack, display_opts disp);
 void nc_draw_input (char * iline);
 void nc_draw_cursor (unsigned int cpos);
 void nc_exit (void);
+const char * keyname_h (int c);
 
 
 #endif /* __UI_H */
