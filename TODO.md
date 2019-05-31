@@ -7,12 +7,3 @@
 - Memory
 - Bottom bar status indicator
 
-# Functions
-## Trig Functions
-
-- csc
-- sec
-- cot
-- asin
-- acos
-- atan

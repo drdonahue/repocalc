@@ -41,6 +41,46 @@ void fn_tan (stk_elem ** stack, double input, unsigned int * cursorpos)
 
 }
 
+void fn_asin (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 1)
+        return;
+    
+
+    push(stack, asin(pop(stack)));
+
+}
+
+
+void fn_acos (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 1)
+        return;
+    
+
+    push(stack, acos(pop(stack)));
+
+}
+
+void fn_atan (stk_elem ** stack, double input, unsigned int * cursorpos)
+{
+    if (input == input)
+        push(stack, input);
+
+    if (stk_size(*stack) < 1)
+        return;
+    
+
+    push(stack, atan(pop(stack)));
+
+}
+
 void fn_push_pi (stk_elem ** stack, double input, unsigned int * cursorpos)
 {
     if (input == input)

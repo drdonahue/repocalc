@@ -28,6 +28,37 @@ START_TEST (test_fn_tan)
 }
 END_TEST
 
+START_TEST (test_fn_asin)
+{
+    stk_elem * stack = NULL;
+    push(&stack, 0);
+    fn_asin (&stack, NAN, 0);
+    ck_assert (pop(&stack) == 0);
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_acos)
+{
+    stk_elem * stack = NULL;
+    push(&stack, 1);
+    fn_acos (&stack, NAN, 0);
+    ck_assert (pop(&stack) == 0);
+    stk_free(&stack);
+}
+END_TEST
+
+START_TEST (test_fn_atan)
+{
+    stk_elem * stack = NULL;
+    push(&stack, 1);
+    fn_atan (&stack, NAN, 0);
+    ck_assert (abs(pop(&stack) - M_PI/2) < 0.000001);
+    stk_free(&stack);
+}
+END_TEST
+
+
 Suite * trig_suite(void)
 {
     Suite *s;
@@ -43,6 +74,12 @@ Suite * trig_suite(void)
     tcase_add_test(tc_core, test_fn_cos);
 
     tcase_add_test(tc_core, test_fn_tan);
+
+    tcase_add_test(tc_core, test_fn_asin);
+    
+    tcase_add_test(tc_core, test_fn_acos);
+
+    tcase_add_test(tc_core, test_fn_atan);
     
     suite_add_tcase(s, tc_core);
     return s;
