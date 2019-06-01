@@ -31,6 +31,7 @@
 
 #define K_EXIT KEY_F(10)
 #define K_DELETE KEY_BACKSPACE
+#define K_HELP '?'
 
 /* keys for precision and display format */
 #define K_PRECISION KEY_F(5)
