@@ -44,5 +44,12 @@ uninstall:
 clean:
 	rm -f repocalc $(OBJ)
 
+defconfig: clean
+	rm -f config.h customfuncs.h customfuncs.h structs.h
+	cp config.def.h config.h
+	cp customfuncs.def.h customfuncs.h
+	cp customfuncs.def.c customfuncs.c
+	cp structs.def.h structs.h
+
 .PHONY: all options clean install uninstall
 
