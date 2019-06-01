@@ -29,17 +29,17 @@ repocalc: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(RPCLFLAGS)
 
 install: repocalc
-	mkdir -p $(INSTALL_DIR)
-	cp -f repocalc $(INSTALL_DIR)
-	chmod 755 $(INSTALL_DIR)/repocalc
-	mkdir -p $(MAN_DIR)/man1
-	sed "s/VERSION/$(VERSION)/g" < repocalc.1 > $(MAN_DIR)/man1/repocalc.1
-	chmod 644 $(MAN_DIR)/man1/repocalc.1
+	mkdir -p $(DESTDIR)$(INSTALL_DIR)
+	cp -f repocalc $(DESTDIR)$(INSTALL_DIR)
+	chmod 755 $(DESTDIR)$(INSTALL_DIR)/repocalc
+	mkdir -p $(DESTDIR)$(MAN_DIR)/man1
+	sed "s/VERSION/$(VERSION)/g" < repocalc.1 > $(DESTDIR)$(MAN_DIR)/man1/repocalc.1
+	chmod 644 $(DESTDIR)$(MAN_DIR)/man1/repocalc.1
 		
 
 uninstall:
-	rm -f $(INSTALL_DIR)/repocalc
-	rm -f $(MAN_DIR)/man1/repocalc.1
+	rm -f $(DESTDIR)$(INSTALL_DIR)/repocalc
+	rm -f $(DESTDIR)$(MAN_DIR)/man1/repocalc.1
 
 clean:
 	rm -f repocalc $(OBJ)
