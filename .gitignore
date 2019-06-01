@@ -5,4 +5,4 @@ config.h
 customfuncs.h
 customfuncs.c
 structs.h
-
+*.tar.gz

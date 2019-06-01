@@ -46,10 +46,29 @@ clean:
 
 defconfig: clean
 	rm -f config.h customfuncs.h customfuncs.h structs.h
-	cp config.def.h config.h
-	cp customfuncs.def.h customfuncs.h
-	cp customfuncs.def.c customfuncs.c
-	cp structs.def.h structs.h
 
-.PHONY: all options clean install uninstall
+dist: defconfig
+	mkdir repocalc
+	cp *.h repocalc
+	cp *.c repocalc
+	cp Makefile repocalc
+	cp config.mk repocalc
+	cp *.md repocalc
+	cp LICENSE repocalc
+	cp repocalc.1 repocalc
+	tar cvzf repocalc-$(VERSION).tar.gz repocalc
+	rm -rf repocalc
+
+
+help:
+	@echo all: Display build options and build the application
+	@echo repocalc: Build the application without displaying build options
+	@echo install: Install the application and manpage to $(INSTALL_DIR) and $(MAN_DIR) respectively
+	@echo uninstall: Uninstall the application from the system
+	@echo clean: Remove generated files
+	@echo defconfig: Restore config.h, corefuncs.h, corefuncs.c, and structs.h to default
+	@echo dist: Create a tarball of the project
+	@echo help: Display this help message
+
+.PHONY: all options install defconfig help
 
