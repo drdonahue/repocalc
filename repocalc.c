@@ -14,7 +14,8 @@ int main (int argc, char **argv)
         }
         else
         {
-            printf ("Usage:\n\nrepocalc\nrepocalc [option]\n\nOptions:\n\n-v: Show version\n-h: Show this usage message\n");
+            printf ("Usage:\n\nrepocalc\nrepocalc [option]\n\nOptions:\n\n-v: Show version\n-h: Show this message\n\n");
+            printf ("For default keybindings and customization information, see man repocalc\n");
         }
         return 0;
     }
