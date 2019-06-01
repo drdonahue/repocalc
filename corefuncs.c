@@ -11,6 +11,9 @@ void fn_push (stk_elem ** stack, double input, unsigned int * cursorpos, const A
 /* Drop the top element of the stack */
 void fn_drop (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
+    if (input == input) /* Delete the input line rather than dropping from the stack */
+        return;
+
     pop(stack);
 }
 
