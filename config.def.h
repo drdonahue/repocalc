@@ -106,6 +106,12 @@ static const Keybind keys[] = {
     {  'p',              fn_push_pi,   {0}         },
     {  KEY_F(1),         rcl,          {.bankno=0} },
     {  KEY_F(13),        sto,          {.bankno=0} },
+    {  KEY_F(2),         rcl,          {.bankno=1} },
+    {  KEY_F(14),        sto,          {.bankno=1} },
+    {  KEY_F(3),         rcl,          {.bankno=2} },
+    {  KEY_F(15),        sto,          {.bankno=2} },
+    {  KEY_F(4),         rcl,          {.bankno=3} },
+    {  KEY_F(16),        sto,          {.bankno=3} },
 };
 
 
