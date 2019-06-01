@@ -2,3 +2,7 @@
 repocalc
 test
 config.h
+customfuncs.h
+customfuncs.c
+structs.h
+

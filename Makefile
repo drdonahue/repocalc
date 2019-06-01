@@ -13,11 +13,17 @@ options:
 
 config.h:
 	cp config.def.h config.h
+customfuncs.c:
+	cp customfuncs.def.c customfuncs.c
+customfuncs.h:
+	cp customfuncs.def.h customfuncs.h
+structs.h:
+	cp structs.def.h structs.h
 
 .c.o:
 	$(CC) $(RPCCFLAGS) -c $<
 
-$(OBJ): config.h config.mk
+$(OBJ): config.h config.mk customfuncs.c customfuncs.h structs.h
 
 repocalc: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(RPCLFLAGS)
