@@ -1,7 +1,8 @@
 VERSION = 1.0.0
 
-INSTALL_DIR = /usr/local/bin
-MAN_DIR = /usr/local/share/man/
+PREFIX = /usr/local
+INSTALL_DIR = $(PREFIX)/bin
+MAN_DIR = $(PREFIX)/share/man/
 
 PKG_CONFIG = pkg-config
 
