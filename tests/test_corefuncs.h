@@ -5,7 +5,7 @@ START_TEST (test_fn_add)
     push(&stack, 9);
     push(&stack, 8);
 
-    fn_add(&stack, NAN, 0);
+    fn_add(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 17, "Add failed.");
     stk_free(&stack);
 }
@@ -18,7 +18,7 @@ START_TEST (test_fn_sub)
     push(&stack, 9);
     push(&stack, 8);
 
-    fn_sub(&stack, NAN, 0);
+    fn_sub(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 1, "Subtract failed.");
     stk_free(&stack);
 }
@@ -31,7 +31,7 @@ START_TEST (test_fn_mul)
     push(&stack, 9);
     push(&stack, 8);
 
-    fn_mul(&stack, NAN, 0);
+    fn_mul(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 72, "Multiply failed.");
     stk_free(&stack);
 }
@@ -44,7 +44,7 @@ START_TEST (test_fn_div)
     push(&stack, 27);
     push(&stack, 3);
 
-    fn_div(&stack, NAN, 0);
+    fn_div(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 9, "Divide failed.");
     stk_free(&stack);
 }
@@ -56,7 +56,7 @@ START_TEST (test_fn_add_input)
 
     push(&stack, 9);
 
-    fn_add(&stack, 8, 0);
+    fn_add(&stack, 8, 0, NULL);
     ck_assert_msg(pop(&stack) == 17, "Add with input failed.");
     stk_free(&stack);
 }
@@ -68,7 +68,7 @@ START_TEST (test_fn_sub_input)
 
     push(&stack, 9);
 
-    fn_sub(&stack, 8, 0);
+    fn_sub(&stack, 8, 0, NULL);
     ck_assert_msg(pop(&stack) == 1, "Subtract with input failed.");
     stk_free(&stack);
 }
@@ -80,7 +80,7 @@ START_TEST (test_fn_mul_input)
 
     push(&stack, 9);
 
-    fn_mul(&stack, 8, 0);
+    fn_mul(&stack, 8, 0, NULL);
     ck_assert_msg(pop(&stack) == 72, "Multiply with input failed.");
     stk_free(&stack);
 }
@@ -92,7 +92,7 @@ START_TEST (test_fn_div_input)
 
     push(&stack, 27);
 
-    fn_div(&stack, 3, 0);
+    fn_div(&stack, 3, 0, NULL);
     ck_assert_msg(pop(&stack) == 9, "Divide with input failed.");
     stk_free(&stack);
 }
@@ -104,7 +104,7 @@ START_TEST (test_fn_negate)
     
     push(&stack, 2);
     
-    fn_negate(&stack, NAN, 0);
+    fn_negate(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == -2, "Negate failed.");
     stk_free(&stack);
 }
@@ -115,7 +115,7 @@ START_TEST (test_fn_negate_input)
     stk_elem * stack = NULL;
     
     
-    fn_negate(&stack, 2, 0);
+    fn_negate(&stack, 2, 0, NULL);
     ck_assert_msg(pop(&stack) == -2, "Negate with input failed.");
     stk_free(&stack);
 }
@@ -128,7 +128,7 @@ START_TEST (test_fn_y_to_x)
     push(&stack, 2);
     push(&stack, 3);
     
-    fn_y_to_x(&stack, NAN, 0);
+    fn_y_to_x(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 8, "y^x failed.");
     stk_free(&stack);
 }
@@ -140,7 +140,7 @@ START_TEST (test_fn_y_to_x_input)
     
     push(&stack, 2);
     
-    fn_y_to_x(&stack, 3, 0);
+    fn_y_to_x(&stack, 3, 0, NULL);
     ck_assert_msg(pop(&stack) == 8, "y^x with input failed.");
     stk_free(&stack);
 }
@@ -152,7 +152,7 @@ START_TEST (test_fn_sqrt)
     
     push(&stack, 9);
     
-    fn_sqrt(&stack, NAN, 0);
+    fn_sqrt(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 3, "Square root failed.");
     stk_free(&stack);
 }
@@ -162,7 +162,7 @@ START_TEST (test_fn_sqrt_input)
 {
     stk_elem * stack = NULL;
     
-    fn_sqrt(&stack, 9, 0);
+    fn_sqrt(&stack, 9, 0, NULL);
     ck_assert_msg(pop(&stack) == 3, "Square root with input failed.");
     stk_free(&stack);
 }
@@ -174,7 +174,7 @@ START_TEST (test_fn_square)
     
     push(&stack, 3);
     
-    fn_square(&stack, NAN, 0);
+    fn_square(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 9, "Square failed.");
     stk_free(&stack);
 }
@@ -184,7 +184,7 @@ START_TEST (test_fn_square_input)
 {
     stk_elem * stack = NULL;
     
-    fn_square(&stack, 3, 0);
+    fn_square(&stack, 3, 0, NULL);
     ck_assert_msg(pop(&stack) == 9, "Square with input failed.");
     stk_free(&stack);
 }
@@ -196,7 +196,7 @@ START_TEST (test_fn_exp)
 
     push(&stack, 0);
     
-    fn_exp(&stack, NAN, 0);
+    fn_exp(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 1, "exp(x) failed.");
     stk_free(&stack);
 
@@ -207,7 +207,7 @@ START_TEST (test_fn_exp_input)
 {
     stk_elem * stack = NULL;
 
-    fn_exp(&stack, 0, 0);
+    fn_exp(&stack, 0, 0, NULL);
     ck_assert_msg(pop(&stack) == 1, "exp(x) with input failed.");
     stk_free(&stack);
 
@@ -220,7 +220,7 @@ START_TEST (test_fn_ln)
 
     push(&stack, 1);
     
-    fn_ln(&stack, NAN, 0);
+    fn_ln(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 0, "ln(x) failed.");
     stk_free(&stack);
 
@@ -231,7 +231,7 @@ START_TEST (test_fn_ln_input)
 {
     stk_elem * stack = NULL;
 
-    fn_ln(&stack, 1, 0);
+    fn_ln(&stack, 1, 0, NULL);
     ck_assert_msg(pop(&stack) == 0, "ln(x) with input failed.");
     stk_free(&stack);
 
@@ -244,7 +244,7 @@ START_TEST (test_fn_log)
 
     push(&stack, 100);
     
-    fn_log(&stack, NAN, 0);
+    fn_log(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 2, "log(x) failed.");
     stk_free(&stack);
 
@@ -255,7 +255,7 @@ START_TEST (test_fn_log_input)
 {
     stk_elem * stack = NULL;
 
-    fn_log(&stack, 100, 0);
+    fn_log(&stack, 100, 0, NULL);
     ck_assert_msg(pop(&stack) == 2, "log(x) with input failed.");
     stk_free(&stack);
 
@@ -269,7 +269,7 @@ START_TEST (test_fn_logn)
     push(&stack, 16);
     push(&stack, 2);
     
-    fn_logn(&stack, NAN, 0);
+    fn_logn(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 4, "log_x(y) failed.");
     stk_free(&stack);
 
@@ -282,7 +282,7 @@ START_TEST (test_fn_logn_input)
 
     push(&stack, 16);
 
-    fn_logn(&stack, 2, 0);
+    fn_logn(&stack, 2, 0, NULL);
     ck_assert_msg(pop(&stack) == 4, "log_x(y) with input failed.");
     stk_free(&stack);
 
@@ -295,7 +295,7 @@ START_TEST (test_fn_inv)
 
     push(&stack, 2);
     
-    fn_inv(&stack, NAN, 0);
+    fn_inv(&stack, NAN, 0, NULL);
     ck_assert_msg(pop(&stack) == 0.5, "1/x failed.");
     stk_free(&stack);
 
@@ -306,7 +306,7 @@ START_TEST (test_fn_inv_input)
 {
     stk_elem * stack = NULL;
 
-    fn_inv(&stack, 2, 0);
+    fn_inv(&stack, 2, 0, NULL);
     ck_assert_msg(pop(&stack) == 0.5, "1/x with input failed.");
     stk_free(&stack);
 

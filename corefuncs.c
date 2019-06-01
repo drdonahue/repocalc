@@ -2,33 +2,33 @@
 #include "corefuncs.h"
 
 /* Push input to the stack */
-void fn_push (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_push (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (input == input)
         push(stack, input);
 }
 
 /* Drop the top element of the stack */
-void fn_drop (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_drop (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     pop(stack);
 }
 
 /* Roll the stack about cursorpos. This puts the element under the cursor on top of the stack. */
-void fn_roll (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_roll (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (*cursorpos > 1)
         roll(stack, *cursorpos - 1);
 }
 
 /* Swap the first 2 elemnts on the stack */
-void fn_swap (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_swap (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     roll(stack, 1);
 }
 
 /* Duplicate the top element of the stack */
-void fn_dup (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_dup (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (!stk_size(*stack))
         return;
@@ -38,20 +38,20 @@ void fn_dup (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Move the cursor up one line */
-void cursor_up (stk_elem ** stack, double input, unsigned int * cursorpos)
+void cursor_up (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     (*cursorpos)++;
 }
 
 /* Move the cursor down one line */
-void cursor_down (stk_elem ** stack, double input, unsigned int * cursorpos)
+void cursor_down (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if(*cursorpos)
         (*cursorpos)--;
 }
 
 /* Add the top 2 elements of the stack */
-void fn_add (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_add (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if(input == input) /* fails on NAN */
         push(stack, input);
@@ -62,7 +62,7 @@ void fn_add (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Subtract the top 2 elements of the stack */
-void fn_sub (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_sub (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     double a,b;
     if(input == input) /* fails on NAN */
@@ -77,7 +77,7 @@ void fn_sub (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Multiply the top 2 elements of the stack */
-void fn_mul (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_mul (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if(input == input) /* fails on NAN */
         push(stack, input);
@@ -88,7 +88,7 @@ void fn_mul (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Divide the top 2 elements of the stack */
-void fn_div (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_div (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     double a,b;
     
@@ -103,7 +103,7 @@ void fn_div (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Negate the top element of the stack */
-void fn_negate (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_negate (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (input == input)
         push(stack, input);
@@ -114,7 +114,7 @@ void fn_negate (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Calculate the 2nd to the 1st element of the stack */
-void fn_y_to_x (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_y_to_x (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     double a,b;
     
@@ -130,7 +130,7 @@ void fn_y_to_x (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Take the square root of the top element of the stack */
-void fn_sqrt (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_sqrt (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (input == input)
         push(stack, input);
@@ -141,7 +141,7 @@ void fn_sqrt (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Square the top element of the stack */
-void fn_square (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_square (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     double x;
     if (input == input)
@@ -155,7 +155,7 @@ void fn_square (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Calculate exp(x) */
-void fn_exp (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_exp (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (input == input)
         push(stack, input);
@@ -167,7 +167,7 @@ void fn_exp (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Calculate ln(x) */
-void fn_ln (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_ln (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (input == input)
         push(stack, input);
@@ -179,7 +179,7 @@ void fn_ln (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Calculate log(x) */
-void fn_log (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_log (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (input == input)
         push(stack, input);
@@ -191,7 +191,7 @@ void fn_log (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Calculate log_x(y) */
-void fn_logn (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_logn (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     double x,y;
     if (input == input)
@@ -207,7 +207,7 @@ void fn_logn (stk_elem ** stack, double input, unsigned int * cursorpos)
 }
 
 /* Calculate 1/x */
-void fn_inv (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_inv (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     if (input == input)
         push(stack, input);

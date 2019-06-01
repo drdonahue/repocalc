@@ -11,10 +11,11 @@
  *
  * Once your function is defined, it can be mapped to a button by adding
  * an item to the keys[] initializer list in config.h.
+ *
  */ 
 
 /*
-void fn_sinh (stk_elem ** stack, double input, unsigned int * cursorpos)
+void fn_sinh (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
     double x;
     if (input==input)

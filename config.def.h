@@ -4,18 +4,21 @@
 #define __CONFIG_H
 
 #include <ncurses.h>
+#include "structs.h"
+
+/* Constants */
+#define INPUT_BUFFER_SIZE 50
+#define NUM_BANKS 4 /*Number of banks for storing values*/
 
 /* function header files */
 
 #include "corefuncs.h"
 #include "trigfuncs.h"
 #include "customfuncs.h"
+#include "bank.h"
 
 /* Macros */
 #define LENGTH(X)   (sizeof X / sizeof X[0])
-
-/* Constants */
-#define INPUT_BUFFER_SIZE 50
 
 /* Option Macros */
 
@@ -34,11 +37,6 @@
 #define K_NRM KEY_F(6)
 #define K_SCI KEY_F(7)
 #define K_ENG KEY_F(8)
-
-typedef struct {
-    int code;
-    void (*func)(stk_elem **, double, unsigned int*);
-}Keybind;
 
 
 /* Function keybindings */
@@ -72,39 +70,42 @@ typedef struct {
  * fn_asin          asin(x)
  * fn_acos          acos(x)
  * fn_atan          atan(x)
+ * sto              store x to a bank   Argument:{.bankno=<bank number to use>}
  */
 
 static const Keybind keys[] = {
-    /* NCurses Keycode   function   */
-    {  '\n',             fn_push     },
-    {  'd',              fn_drop     },
-    {  '+',              fn_add      },
-    {  '-',              fn_sub      },
-    {  '*',              fn_mul      },
-    {  '/',              fn_div      },
-    {  'n',              fn_negate   },
-    {  'k',              cursor_up   },
-    {  KEY_UP,           cursor_up   },
-    {  'j',              cursor_down },
-    {  KEY_DOWN,         cursor_down },
-    {  'r',              fn_roll     },
-    {  '\t',             fn_swap     },
-    {  '^',              fn_y_to_x   },
-    {  'q',              fn_sqrt     },
-    {  'Q',              fn_square   },
-    {  'u',              fn_dup      },
-    {  'E',              fn_exp      },
-    {  'l',              fn_ln       },
-    {  'L',              fn_log      },
-    {  'b',              fn_logn     },
-    {  'i',              fn_inv      },
-    {  's',              fn_sin      },
-    {  'c',              fn_cos      },
-    {  't',              fn_tan      },
-    {  'S',              fn_asin     },
-    {  'C',              fn_acos     },
-    {  'T',              fn_atan     },
-    {  'p',              fn_push_pi  },
+    /* NCurses Keycode   function   Arguments */
+    {  '\n',             fn_push,      {0}         },
+    {  'd',              fn_drop,      {0}         },
+    {  '+',              fn_add,       {0}         },
+    {  '-',              fn_sub,       {0}         },
+    {  '*',              fn_mul,       {0}         },
+    {  '/',              fn_div,       {0}         },
+    {  'n',              fn_negate,    {0}         },
+    {  'k',              cursor_up,    {0}         },
+    {  KEY_UP,           cursor_up,    {0}         },
+    {  'j',              cursor_down,  {0}         },
+    {  KEY_DOWN,         cursor_down,  {0}         },
+    {  'r',              fn_roll,      {0}         },
+    {  '\t',             fn_swap,      {0}         },
+    {  '^',              fn_y_to_x,    {0}         },
+    {  'q',              fn_sqrt,      {0}         },
+    {  'Q',              fn_square,    {0}         },
+    {  'u',              fn_dup,       {0}         },
+    {  'E',              fn_exp,       {0}         },
+    {  'l',              fn_ln,        {0}         },
+    {  'L',              fn_log,       {0}         },
+    {  'b',              fn_logn,      {0}         },
+    {  'i',              fn_inv,       {0}         },
+    {  's',              fn_sin,       {0}         },
+    {  'c',              fn_cos,       {0}         },
+    {  't',              fn_tan,       {0}         },
+    {  'S',              fn_asin,      {0}         },
+    {  'C',              fn_acos,      {0}         },
+    {  'T',              fn_atan,      {0}         },
+    {  'p',              fn_push_pi,   {0}         },
+    {  KEY_F(1),         rcl,          {.bankno=0} },
+    {  KEY_F(13),        sto,          {.bankno=0} },
 };
 
 

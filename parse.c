@@ -7,12 +7,11 @@ void parse (stk_elem ** stack, int keycode, unsigned int * cursor_pos, char * il
 {
     double input;
     int i;
-    
+
     /* process the user-defined keypresses */
     for (i = 0; i < LENGTH(keys); ++i)
     {
-        if (keycode == keys[i].code &&
-            keys[i].func)
+        if (keycode == keys[i].code && keys[i].func)
         {
             /* convert the input line (if not empty) to double NaN denotes no input. */
             if (strlen(iline))
@@ -21,8 +20,9 @@ void parse (stk_elem ** stack, int keycode, unsigned int * cursor_pos, char * il
                 input = NAN;
 
             /* run the function that the keypress corresponds to */
-            keys[i].func(stack, input, cursor_pos);
-            
+            keys[i].func(stack, input, cursor_pos, &keys[i].arg);
+
+
             /* clear the input line */
             iline[0] = 0;
         }
@@ -38,7 +38,7 @@ void parse (stk_elem ** stack, int keycode, unsigned int * cursor_pos, char * il
             iline[i+1] = 0;
         }
     }
-    
+
     /* Delete the last character of input on K_DELETE (default backspace) */
     if (keycode == K_DELETE && strlen(iline) > 0) 
     {
