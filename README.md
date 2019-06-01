@@ -1,14 +1,12 @@
 # Reverse Polish Calculator
-## v0.3.2
+## v1.0.0
 
-RepoCalc is an RPN calculator inspired by the [Suckless Philosophy](https://suckless.org/philosophy) that uses an ncurses UI. It is currently under heavy development, as there are
-a few more features to implement (see [TODO](TODO.md)), but it is fully usable as-is. Note that, until release 1.0.0, the interfaces
-used for custom functions may change slightly.
+RepoCalc is an RPN calculator inspired by the [Suckless Philosophy](https://suckless.org/philosophy) that uses an ncurses UI. 
 
 # Installation
 
 RepoCalc *should* build on any \*nix system that has a c compiler, a standard library, ncurses, pkg-config, and make. If
-it fails to build on your system, please report the issue on the [Issues](https://github.com/drdonahue/repocalc/issues) page
+it fails to build or run on your system, please report the issue on the [Issues](https://github.com/drdonahue/repocalc/issues) page
 so it can be fixed. I hope to achieve a fair degree of platform-independence, so I will try and fix compatibility issues as they arise.
 
 The basic installation process:
@@ -36,4 +34,9 @@ Run `make` to build repocalc with your function.
 If your function requires a constant argument (ie alter behavior depending on which keypress called it), add a field for it to the
 Arg struct in structs.h. You can then set the argument in the `keys[]` initializer list.
 
+# Contributing
+
+If you think that RepoCalc is missing important functionality or want to otherwise improve it, feel free to either create an 
+[issue](https://github.com/drdonahue/repocalc/issues) with suggestions or create a fork and implement your changes there so they can
+be merged in.
 

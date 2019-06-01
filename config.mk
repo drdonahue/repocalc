@@ -1,4 +1,4 @@
-VERSION = 0.3.2
+VERSION = 1.0.0
 
 INSTALL_DIR = /usr/local/bin
 MAN_DIR = /usr/local/share/man/
