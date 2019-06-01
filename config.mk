@@ -1,4 +1,4 @@
-VERSION = 1.0.0
+VERSION = 1.0.1
 
 PREFIX = /usr/local
 INSTALL_DIR = $(PREFIX)/bin
