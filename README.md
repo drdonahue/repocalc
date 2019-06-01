@@ -2,7 +2,7 @@
 ## v0.3.0
 
 RepoCalc is an RPN calculator inspired by the [Suckless Philosophy](https://suckless.org/philosophy) that uses an ncurses UI. It is currently under heavy development, as there are
-a few more features to implemnt (see [TODO](TODO.md)), but it is fully usable as-is. Note that, until release 1.0.0, the interfaces
+a few more features to implement (see [TODO](TODO.md)), but it is fully usable as-is. Note that, until release 1.0.0, the interfaces
 used for custom functions may change slightly.
 
 # Installation
