@@ -33,6 +33,9 @@ void fn_swap (stk_elem ** stack, double input, unsigned int * cursorpos, const A
 /* Duplicate the top element of the stack */
 void fn_dup (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
 {
+    if (input == input)
+        push(stack, input);
+
     if (!stk_size(*stack))
         return;
 

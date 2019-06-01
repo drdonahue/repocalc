@@ -170,7 +170,7 @@ void nc_draw_stack (const stk_elem * stack, display_opts disp)
 
     stack_size = stk_size(stack);
 
-    for (i = 0; i < h-4; ++i)
+    for (i = 0; i < h-3; ++i)
     {
         move(h-(4+i), 5);
         wprintw(stdscr, blankline);
