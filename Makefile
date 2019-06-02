@@ -48,16 +48,16 @@ defconfig: clean
 	rm -f config.h customfuncs.h customfuncs.h structs.h
 
 dist: defconfig
-	mkdir repocalc
-	cp *.h repocalc
-	cp *.c repocalc
-	cp Makefile repocalc
-	cp config.mk repocalc
-	cp *.md repocalc
-	cp LICENSE repocalc
-	cp repocalc.1 repocalc
-	tar cvzf repocalc-$(VERSION).tar.gz repocalc
-	rm -rf repocalc
+	mkdir repocalc-$(VERSION)
+	cp *.h repocalc-$(VERSION)
+	cp *.c repocalc-$(VERSION)
+	cp Makefile repocalc-$(VERSION)
+	cp config.mk repocalc-$(VERSION)
+	cp *.md repocalc-$(VERSION)
+	cp LICENSE repocalc-$(VERSION)
+	cp repocalc.1 repocalc-$(VERSION)
+	tar cvzf repocalc-$(VERSION).tar.gz repocalc-$(VERSION)
+	rm -rf repocalc-$(VERSION)
 
 
 help:
