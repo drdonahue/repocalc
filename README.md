@@ -4,6 +4,10 @@
 RepoCalc is an RPN calculator inspired by the [Suckless Philosophy](https://suckless.org/philosophy) that uses an ncurses UI. 
 
 ## Installation
+### Arch Linux
+RepoCalc is available in the [AUR](https://aur.archlinux.org/packages/repocalc/)
+
+### From Source
 
 RepoCalc *should* build on any \*nix system that has a c compiler, a standard library, ncurses, pkg-config, and make. If
 it fails to build or run on your system, please report the issue on the [Issues](https://github.com/drdonahue/repocalc/issues) page
