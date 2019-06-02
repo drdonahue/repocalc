@@ -1,6 +1,6 @@
 /* see LICENSE for license details */
 #ifndef __COREFUNCS_H
-#define __COFEFUNCS_H
+#define __COREFUNCS_H
 #include "stack.h"
 #include <math.h>
 #include "structs.h"
