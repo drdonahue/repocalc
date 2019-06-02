@@ -24,5 +24,8 @@ int main (int argc, char **argv)
     nc_init();
     nc_loop();
     nc_exit();
+
+    printf ("\n");
+
     return 0;
 }
