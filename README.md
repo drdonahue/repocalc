@@ -1,5 +1,5 @@
 # Reverse Polish Calculator
-## v1.0.1
+## v1.0.2
 
 RepoCalc is an RPN calculator inspired by the [Suckless Philosophy](https://suckless.org/philosophy) that uses an ncurses UI. 
 
