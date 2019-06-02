@@ -3,7 +3,7 @@
 
 RepoCalc is an RPN calculator inspired by the [Suckless Philosophy](https://suckless.org/philosophy) that uses an ncurses UI. 
 
-# Installation
+## Installation
 
 RepoCalc *should* build on any \*nix system that has a c compiler, a standard library, ncurses, pkg-config, and make. If
 it fails to build or run on your system, please report the issue on the [Issues](https://github.com/drdonahue/repocalc/issues) page
@@ -17,7 +17,7 @@ cd repocalc
 make
 sudo make install
 ```
-# Configuration
+## Configuration
 
 All of the keybindings can be edited in config.h (if it doesn't exist run `make` or `cp config.def.h config.h`).
 There are 2 special keybindings that you can change by modifying the define statements: Backspace and Exit.
@@ -34,7 +34,7 @@ Run `make` to build repocalc with your function.
 If your function requires a constant argument (ie alter behavior depending on which keypress called it), add a field for it to the
 Arg struct in structs.h. You can then set the argument in the `keys[]` initializer list.
 
-# Contributing
+## Contributing
 
 If you think that RepoCalc is missing important functionality or want to otherwise improve it, feel free to either create an 
 [issue](https://github.com/drdonahue/repocalc/issues) with suggestions or create a fork and implement your changes there so they can
