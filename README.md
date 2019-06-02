@@ -41,4 +41,3 @@ Arg struct in structs.h. You can then set the argument in the `keys[]` initializ
 ## Contributing
 
 If you think that RepoCalc is missing important functionality or want to otherwise improve it, feel free to either create an [issue](https://github.com/drdonahue/repocalc/issues) with suggestions or create a fork and implement your changes there so they can be merged in.
-
