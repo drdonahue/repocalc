@@ -181,7 +181,11 @@ void nc_draw_stack (const stk_elem * stack, display_opts disp)
             if (disp.m == ENG)
             {
                 eng_pwr = (int) log10 (stk_at(stack,i));
-                if (eng_pwr > 0)
+                if (stk_at(stack,i) == 0.0)
+                {
+                    eng_pwr = 0;
+                }
+                else if (eng_pwr > 0)
                 {
                     eng_pwr = (eng_pwr / 3)*3;
                 }
