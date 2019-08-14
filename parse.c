@@ -5,7 +5,7 @@
 
 void parse (stk_elem ** stack, int keycode, unsigned int * cursor_pos, char * iline)
 {
-    double input;
+    double input, tmp;
     int i;
 
     /* process the user-defined keypresses */
@@ -20,11 +20,20 @@ void parse (stk_elem ** stack, int keycode, unsigned int * cursor_pos, char * il
                 input = NAN;
 
             /* run the function that the keypress corresponds to */
-            keys[i].func(stack, input, cursor_pos, &keys[i].arg);
+            keys[i].func(stack, &input, cursor_pos, &keys[i].arg);
 
 
-            /* clear the input line */
-            iline[0] = 0;
+            /* clear the input line if it the function indicates to */
+            if (!(input == input))
+            {
+                iline[0] = 0;
+            }
+            else
+            {
+                sscanf (iline, "%lg", &tmp);
+                if (input != tmp)
+                    sprintf(iline, "%lg", input);
+            }
         }
     }
 

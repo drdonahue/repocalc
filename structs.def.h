@@ -18,7 +18,7 @@ typedef struct {
 
 typedef struct {
     int code;
-    void (*func)(stk_elem **, double, unsigned int *, const Arg *);
+    void (*func)(stk_elem **, double *, unsigned int *, const Arg *);
     const Arg arg;
 }Keybind;
 
