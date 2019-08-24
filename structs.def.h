@@ -13,6 +13,7 @@ struct stk_elem
 /* structure for special, constant arguements to certian functions */
 typedef struct {
     unsigned int bankno;
+    char * c;
 }Arg;
 
 

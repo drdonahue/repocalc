@@ -3,6 +3,7 @@
 #define __COREFUNCS_H
 #include "stack.h"
 #include <math.h>
+#include <string.h>
 #include "structs.h"
 
 void fn_push (stk_elem ** stack, double *input, unsigned int * cursorpos, const Arg * arg);
