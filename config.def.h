@@ -88,7 +88,7 @@ static const Keybind keys[] = {
     {  'j',              cursor_down,  {0}         },
     {  KEY_DOWN,         cursor_down,  {0}         },
     {  'r',              fn_roll,      {0}         },
-    {  'g',              fn_roll,      {.c="sel"}  },
+    {  'y',              fn_roll,      {.c="sel"}  },
     {  '\t',             fn_swap,      {.c="toX"}  },
     {  '^',              fn_y_to_x,    {0}         },
     {  'q',              fn_sqrt,      {0}         },

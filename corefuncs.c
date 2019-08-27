@@ -24,25 +24,22 @@ void fn_drop (stk_elem ** stack, double *input, unsigned int * cursorpos, const 
 /* Roll the stack about cursorpos. This puts the element under the cursor on top of the stack. */
 void fn_roll (stk_elem ** stack, double *input, unsigned int * cursorpos, const Arg * arg )
 {
-    if (*input == *input)
-    {
-        push(stack, *input);
-        if (*cursorpos)
-            (*cursorpos)++;
-    }
+    if (!*cursorpos)
+        return;
     
-    if (*cursorpos > 1)
-        roll(stack, *cursorpos - 1);
-
     if (arg->c && !strncmp(arg->c, "sel", 3))
     {
         if (*input == *input)
-            if (*cursorpos)
-                (*cursorpos)--;
+        {
+            push(stack, *input);
+        }
+        roll (stack, *cursorpos);    
         *input = pop(stack);
     }
-    else
-        *input = NAN;
+    else if (*cursorpos > 1)
+    {
+        roll(stack, *cursorpos - 1);
+    }
 
 }
 
