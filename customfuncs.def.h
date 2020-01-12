@@ -13,7 +13,7 @@
  */
 
 /*Example custom function: sinh*/
-/*void fn_sinh (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg);*/
+/*void fn_sinh (stk_elem ** stack, double * input, unsigned int * cursorpos, const Arg * arg);*/
 
 
 #endif

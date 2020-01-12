@@ -15,15 +15,19 @@
  */ 
 
 /*
-void fn_sinh (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg )
+void fn_sinh (stk_elem ** stack, double *input, unsigned int * cursorpos, const Arg * arg )
 {
     double x;
-    if (input==input)
-        push(stack, input);
+    
+    //check if *input exists. If it does not, this check will fail because *input will be NAN
+    if (*input==*input)
+        push(stack, *input);
 
+    //If there is nothing on the stack, return
     if (stk_size(*stack) < 1)
         return;
     
+    //Compute sinh(x) on the ToS and push the result
     x = pop(stack);
     push(stack, sinh(x));
 }
