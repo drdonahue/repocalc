@@ -1,5 +1,5 @@
 # Reverse Polish Calculator
-## v1.0.4
+## v1.1.0
 
 RepoCalc is an RPN calculator inspired by the [Suckless Philosophy](https://suckless.org/philosophy) that uses an ncurses UI. 
 
@@ -30,9 +30,9 @@ be changed by editing the `Keybind keys[]` initialization list. This is also whe
 
 Custom functions can be defined in customfuncs.h and customfuncs.c. They follow this template:
 ```c 
-void <function name> (stk_elem ** stack, double input, unsigned int * cursorpos, const Arg * arg);
+void <function name> (stk_elem ** stack, double * input, unsigned int * cursorpos, const Arg * arg);
 ```
-Once the function is defined, simple add a line to the `keys[]` initialization list in config.h to map it to a key.
+Once the function is defined, simply add a line to the `keys[]` initialization list in config.h to map it to a key.
 Run `make` to build repocalc with your function.
 
 If your function requires a constant argument (ie alter behavior depending on which keypress called it), add a field for it to the
