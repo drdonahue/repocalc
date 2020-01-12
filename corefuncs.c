@@ -32,8 +32,13 @@ void fn_roll (stk_elem ** stack, double *input, unsigned int * cursorpos, const 
         if (*input == *input)
         {
             push(stack, *input);
+            roll (stack, *cursorpos);    
         }
-        roll (stack, *cursorpos);    
+        else if (*cursorpos > 1)
+        {
+            roll (stack, *cursorpos - 1);    
+        }
+
         *input = pop(stack);
     }
     else if (*cursorpos > 1)
@@ -46,7 +51,7 @@ void fn_roll (stk_elem ** stack, double *input, unsigned int * cursorpos, const 
 /* Swap the first 2 elemnts on the stack */
 void fn_swap (stk_elem ** stack, double *input, unsigned int * cursorpos, const Arg * arg )
 {
-    if (arg->c && !strncmp(arg->c, "toX", 3))
+    if (arg->c && !strncmp(arg->c, "toInput", 3))
     {
         if (*input == *input)
         {

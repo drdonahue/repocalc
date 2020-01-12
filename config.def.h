@@ -46,8 +46,10 @@
 /* Available functions:
  * fn_push          push the input line to the stack
  * fn_drop          drop x
- * fn_roll          roll the stack about the cursor position
+ * fn_roll          roll the stack about the cursor position.
+ *                  Optional argument: {.c="sel"} -- Include input line in roll
  * fn_swap          swap x and y on the stack
+ *                  Optional argument: {.c="toInput"} -- Swap ToS and input line
  * fn_dup           duplicate x on the stack
  * cursor_up        move the cursor up 1 line
  * cursor_down      move the cursor down 1 line
@@ -76,44 +78,45 @@
 
 static const Keybind keys[] = {
     /* NCurses Keycode   function   Arguments */
-    {  '\n',             fn_push,      {0}         },
-    {  'd',              fn_drop,      {0}         },
-    {  '+',              fn_add,       {0}         },
-    {  '-',              fn_sub,       {0}         },
-    {  '*',              fn_mul,       {0}         },
-    {  '/',              fn_div,       {0}         },
-    {  'n',              fn_negate,    {0}         },
-    {  'k',              cursor_up,    {0}         },
-    {  KEY_UP,           cursor_up,    {0}         },
-    {  'j',              cursor_down,  {0}         },
-    {  KEY_DOWN,         cursor_down,  {0}         },
-    {  'r',              fn_roll,      {0}         },
-    {  'y',              fn_roll,      {.c="sel"}  },
-    {  '\t',             fn_swap,      {.c="toX"}  },
-    {  '^',              fn_y_to_x,    {0}         },
-    {  'q',              fn_sqrt,      {0}         },
-    {  'Q',              fn_square,    {0}         },
-    {  'u',              fn_dup,       {0}         },
-    {  'E',              fn_exp,       {0}         },
-    {  'l',              fn_ln,        {0}         },
-    {  'L',              fn_log,       {0}         },
-    {  'b',              fn_logn,      {0}         },
-    {  'i',              fn_inv,       {0}         },
-    {  's',              fn_sin,       {0}         },
-    {  'c',              fn_cos,       {0}         },
-    {  't',              fn_tan,       {0}         },
-    {  'S',              fn_asin,      {0}         },
-    {  'C',              fn_acos,      {0}         },
-    {  'T',              fn_atan,      {0}         },
-    {  'p',              fn_push_pi,   {0}         },
-    {  KEY_F(1),         rcl,          {.bankno=0} },
-    {  KEY_F(13),        sto,          {.bankno=0} },
-    {  KEY_F(2),         rcl,          {.bankno=1} },
-    {  KEY_F(14),        sto,          {.bankno=1} },
-    {  KEY_F(3),         rcl,          {.bankno=2} },
-    {  KEY_F(15),        sto,          {.bankno=2} },
-    {  KEY_F(4),         rcl,          {.bankno=3} },
-    {  KEY_F(16),        sto,          {.bankno=3} },
+    {  '\n',             fn_push,      {0}           },
+    {  'd',              fn_drop,      {0}           },
+    {  '+',              fn_add,       {0}           },
+    {  '-',              fn_sub,       {0}           },
+    {  '*',              fn_mul,       {0}           },
+    {  '/',              fn_div,       {0}           },
+    {  'n',              fn_negate,    {0}           },
+    {  'k',              cursor_up,    {0}           },
+    {  KEY_UP,           cursor_up,    {0}           },
+    {  'j',              cursor_down,  {0}           },
+    {  KEY_DOWN,         cursor_down,  {0}           },
+    {  'r',              fn_roll,      {0}           },
+    {  'y',              fn_roll,      {.c="sel"}    },
+    {  'w',              fn_swap,      {0}           },
+    {  '\t',             fn_swap,      {.c="toInput"}},
+    {  '^',              fn_y_to_x,    {0}           },
+    {  'q',              fn_sqrt,      {0}           },
+    {  'Q',              fn_square,    {0}           },
+    {  'u',              fn_dup,       {0}           },
+    {  'E',              fn_exp,       {0}           },
+    {  'l',              fn_ln,        {0}           },
+    {  'L',              fn_log,       {0}           },
+    {  'b',              fn_logn,      {0}           },
+    {  'i',              fn_inv,       {0}           },
+    {  's',              fn_sin,       {0}           },
+    {  'c',              fn_cos,       {0}           },
+    {  't',              fn_tan,       {0}           },
+    {  'S',              fn_asin,      {0}           },
+    {  'C',              fn_acos,      {0}           },
+    {  'T',              fn_atan,      {0}           },
+    {  'p',              fn_push_pi,   {0}           },
+    {  KEY_F(1),         rcl,          {.bankno=0}   },
+    {  KEY_F(13),        sto,          {.bankno=0}   },
+    {  KEY_F(2),         rcl,          {.bankno=1}   },
+    {  KEY_F(14),        sto,          {.bankno=1}   },
+    {  KEY_F(3),         rcl,          {.bankno=2}   },
+    {  KEY_F(15),        sto,          {.bankno=2}   },
+    {  KEY_F(4),         rcl,          {.bankno=3}   },
+    {  KEY_F(16),        sto,          {.bankno=3}   },
 };
 
 

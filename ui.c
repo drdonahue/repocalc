@@ -260,12 +260,15 @@ void nc_draw_help (void)
     int h,w,i;
     char * blankline;
     char helptext[] =
+        "Note: x refers to the current input or line 1,\n"
+        "and y refers to the item below x on the stack\n"
         "Default keys:\n"
         "RETURN: push the current input to the stack\n"
         "d: drop x\n"
-        "u: duplicate x"
+        "u: duplicate x\n"
         "TAB: swap y and x\n"
-        "r: roll about the cursor position"
+        "r: roll about the cursor position\n"
+        "y: push input and move item under cursor to input\n"
         "UP and DOWN or k and j: move the cursor up or down\n"
         "+ - * /: perform addition, subtraction, multiplication, and division\n"
         "^: compute y^x\n"

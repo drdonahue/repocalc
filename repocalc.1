@@ -27,8 +27,11 @@ Drop x
 .B u
 Duplicate x
 .TP
-.B TAB
+.B w
 Swap x and y on the stack
+.TP
+.B TAB
+Swap input line with the top of stack
 .TP
 .B k, UP
 Move the cursor up 1 line
@@ -40,6 +43,11 @@ Move the cursor down 1 line
 Roll the stack about the cursor. This puts the
 element at the cursor to the top of the stack
 and shifts the elements on top of it down.
+.TP
+.B y
+Move the item under the cursor to the input
+line. If an input was already present, it will be
+pushed to the stack.
 .TP
 .B +
 Add x and y
