@@ -162,9 +162,14 @@ void fn_div (stk_elem ** stack, double *input, unsigned int * cursorpos, const A
 /* Negate the top element of the stack */
 void fn_negate (stk_elem ** stack, double *input, unsigned int * cursorpos, const Arg * arg )
 {
+    //negate input if present
     if (*input == *input)
-        push(stack, *input);
+    {
+        *input = -(*input);
+        return;
+    }
 
+    //Else negate ToS if present
     if (stk_size(*stack) < 1)
         return;
     push(stack,-pop(stack));
