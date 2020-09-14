@@ -136,7 +136,7 @@ START_TEST (test_fn_negate_input)
     
     
     fn_negate(&stack, &input, &cursorpos, NULL);
-    ck_assert_msg(pop(&stack) == -2, "Negate with input failed.");
+    ck_assert_msg(input == -2, "Negate with input failed.");
     stk_free(&stack);
 }
 END_TEST
