@@ -33,7 +33,7 @@ START_TEST (test_stack_pop_empty_stack)
     tval = pop(&stack);
 
     /* Comparisons with NaN are always false, so x != x evals to true iff x = NaN */
-    ck_assert_msg(tval != tval, "pop returned non-NAN on an empty stack: got %g", tval);
+    ck_assert_msg(tval != tval, "pop returned non-NULL on an empty stack: got %g", tval);
 }
 END_TEST
 
